@@ -1,0 +1,221 @@
+@prefix : <http://example.org/fair-assessment#> .
+@prefix fair: <http://example.org/fair-assessment#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+<http://example.org/fair-assessment#> a owl:Ontology ;
+    dct:title "FAIR Assessment Ontology"@en ;
+    dct:description "An ontology for modeling FAIR principle assessment results for digital objects, with support for temporal tracking and detailed sub-principle evaluation."@en ;
+    dct:created "2025-02-01"^^xsd:date ;
+    dct:creator "Gabriele Tuozzo" ;
+    owl:versionInfo "1.0" ;
+    rdfs:comment "This ontology provides comprehensive FAIR assessment modeling."@en ;
+    owl:imports <http://www.w3.org/ns/prov#> ,
+                <http://www.w3.org/2004/02/skos/core#> .
+
+################################################################################
+# Classes
+################################################################################
+
+fair:FAIRAssessment a owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "FAIR Assessment"@en ;
+    rdfs:comment "A quality assessment of a digital object against FAIR principles at a specific point in time."@en .
+
+fair:SubPrincipleResult a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Sub-Principle Result"@en ;
+    rdfs:comment "The assessment result for a specific FAIR sub-principle (e.g., F1, A1.1, I2)."@en .
+
+fair:Principle a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    owl:oneOf ( fair:Findable fair:Accessible fair:Interoperable fair:Reusable ) ;
+    rdfs:label "FAIR Principle"@en ;
+    rdfs:comment "One of the four main FAIR principles: Findable, Accessible, Interoperable, or Reusable."@en .
+
+# FAIR Principles
+fair:Findable a fair:Principle ;
+    skos:prefLabel "Findable"@en ;
+    skos:definition "Data and metadata should be easy to find for both humans and computers. Machine-readable metadata are essential for automatic discovery of datasets and services."@en ;
+    skos:notation "F" ;
+    dct:source <https://www.go-fair.org/fair-principles/> .
+
+fair:Accessible a fair:Principle ;
+    skos:prefLabel "Accessible"@en ;
+    skos:definition "Once the user finds the required data, she/he needs to know how can they be accessed, possibly including authentication and authorization."@en ;
+    skos:notation "A" ;
+    dct:source <https://www.go-fair.org/fair-principles/> .
+
+fair:Interoperable a fair:Principle ;
+    skos:prefLabel "Interoperable"@en ;
+    skos:definition "The data usually need to be integrated with other data. In addition to the data, the metadata should also be integrated with other metadata."@en ;
+    skos:notation "I" ;
+    dct:source <https://www.go-fair.org/fair-principles/> .
+
+fair:Reusable a fair:Principle ;
+    skos:prefLabel "Reusable"@en ;
+    skos:definition "The ultimate goal of FAIR is to optimize the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings."@en ;
+    skos:notation "R" ;
+    dct:source <https://www.go-fair.org/fair-principles/> .
+
+fair:SubPrinciple a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "FAIR Sub-Principle"@en ;
+    rdfs:comment "A specific sub-principle under one of the main FAIR principles (e.g., F1, A1.1, I2)."@en .
+
+fair:AssessmentScope a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    owl:oneOf ( fair:DataScope fair:MetadataScope fair:DataAndMetadata ) ;
+    rdfs:label "Assessment Scope"@en ;
+    rdfs:comment "The scope of what is being assessed: data, metadata, or both."@en .
+
+fair:DataScope a fair:AssessmentScope ;
+    rdfs:label "Data"@en .
+
+fair:MetadataScope a fair:AssessmentScope ;
+    rdfs:label "Metadata"@en .
+
+fair:DataAndMetadata a fair:AssessmentScope ;
+    rdfs:label "Data and Metadata"@en .
+
+fair:TestOutcome a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Test Outcome"@en ;
+    rdfs:comment "The result of a FAIR test (e.g., Pass, Fail, or Indeterminate)."@en .
+
+fair:ScoringFunction a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Scoring Function"@en ;
+    rdfs:comment "A mathematical or logical function that maps assessment evidence to a numeric score for a sub-principle."@en .
+
+fair:CalculationAlgorithm a owl:Class ;
+    rdfs:subClassOf prov:Plan ;
+    rdfs:label "Scoring Algorithm"@en ;
+    rdfs:comment "The computational procedure or method used to evaluate a sub-principle and produce a score."@en .
+
+fair:AggregationMethod a owl:Class ;
+    rdfs:subClassOf prov:Plan ;
+    rdfs:label "Aggregation Method"@en ;
+    rdfs:comment "A method for combining individual sub-principle scores into principle-level or overall scores."@en .
+
+################################################################################
+# Object Properties
+################################################################################
+
+fair:wasAssessedBy a owl:ObjectProperty ;
+    rdfs:domain prov:Entity ;         
+    rdfs:range fair:FAIRAssessment ;             
+    rdfs:label "was assessed by"@en ;
+    rdfs:comment "Links a resource to a FAIR assessment that evaluated it."@en .
+
+# FAIR Assessment Properties
+fair:overallScore a owl:DatatypeProperty ;
+    rdfs:domain fair:FAIRAssessment ;  
+    rdfs:range xsd:decimal ;  
+    rdfs:label "overall score"@en ;
+    rdfs:comment "An aggregate score for the entire FAIR assessment."@en .
+
+fair:hasSubPrincipleResult a owl:ObjectProperty ;
+    rdfs:domain fair:FAIRAssessment ;
+    rdfs:range fair:SubPrincipleResult ;
+    rdfs:label "has sub-principle result"@en ;
+    rdfs:comment "Links an assessment to individual sub-principle results."@en .
+
+fair:appliesTo a owl:ObjectProperty ;
+    rdfs:domain fair:SubPrinciple ;
+    rdfs:range fair:AssessmentScope ;
+    rdfs:label "applies to"@en ;
+    rdfs:comment "Indicates whether a sub-principle applies to data, metadata, or both."@en .
+
+# FAIR Sub-Principle Result Properties
+fair:value a owl:DatatypeProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "value"@en ;
+    rdfs:comment "The numeric value assigned to the sub-principle result."@en .
+
+fair:evidence a owl:DatatypeProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range xsd:string ;
+    rdfs:label "evidence"@en ;
+    rdfs:comment "Textual evidence supporting the sub-principle result."@en .
+
+fair:testResult a owl:ObjectProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range fair:TestOutcome ;
+    rdfs:label "test result"@en ;
+    rdfs:comment "The outcome of the test for the sub-principle."@en .
+
+fair:assessmentScope a owl:ObjectProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range fair:AssessmentScope ;
+    rdfs:label "assessment scope"@en ;
+    rdfs:comment "Indicates whether the sub-principle result pertains to data, metadata, or both."@en .
+
+fair:forSubPrinciple a owl:ObjectProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range fair:SubPrinciple ;
+    rdfs:label "for sub-principle"@en ;
+    rdfs:comment "Links a sub-principle result to the specific sub-principle it evaluates."@en .
+
+# Link SubPrincipleResult to the scoring mechanism used
+fair:computedUsing a owl:ObjectProperty ;
+    rdfs:domain fair:SubPrincipleResult ;
+    rdfs:range fair:CalculationAlgorithm ;
+    rdfs:label "computed using"@en ;
+    rdfs:comment "Links a sub-principle result to the algorithm used to compute it."@en .
+
+fair:appliesScoringFunction a owl:ObjectProperty ;
+    rdfs:domain fair:CalculationAlgorithm ;
+    rdfs:range fair:ScoringFunction ;
+    rdfs:label "applies scoring function"@en ;
+    rdfs:comment "Links an algorithm to the scoring function it uses."@en .
+
+# Link FAIRAssessment to its aggregation method
+fair:usesAggregationMethod a owl:ObjectProperty ;
+    rdfs:domain fair:FAIRAssessment ;
+    rdfs:range fair:AggregationMethod ;
+    rdfs:label "uses aggregation method"@en ;
+    rdfs:comment "Links an assessment to the method used to aggregate sub-principle scores."@en .
+
+# Properties to describe the scoring function
+fair:formula a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "formula"@en ;
+    rdfs:comment "A textual or mathematical representation of the scoring formula."@en .
+
+fair:minValue a owl:DatatypeProperty ;
+    rdfs:domain fair:ScoringFunction ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "minimum value"@en ;
+    rdfs:comment "The minimum possible score this function can produce."@en .
+
+fair:maxValue a owl:DatatypeProperty ;
+    rdfs:domain fair:ScoringFunction ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "maximum value"@en ;
+    rdfs:comment "The maximum possible score this function can produce."@en .
+
+# Properties for the algorithm
+fair:implementedBy a owl:ObjectProperty ;
+    rdfs:domain fair:CalculationAlgorithm ;
+    rdfs:range prov:SoftwareAgent ;
+    rdfs:label "implemented by"@en ;
+    rdfs:comment "Links the algorithm to the software that implements it."@en .
+
+fair:algorithmDescription a owl:DatatypeProperty ;
+    rdfs:domain fair:CalculationAlgorithm ;
+    rdfs:range xsd:string ;
+    rdfs:label "algorithm description"@en ;
+    rdfs:comment "A human-readable description of how the algorithm works."@en .
+
+fair:sourceCode a owl:DatatypeProperty ;
+    rdfs:domain fair:CalculationAlgorithm ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "source code"@en ;
+    rdfs:comment "URI pointing to the source code implementing this algorithm."@en .
