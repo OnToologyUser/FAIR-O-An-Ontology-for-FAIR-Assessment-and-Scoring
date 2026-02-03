@@ -1,0 +1,232 @@
+@prefix exdata: <http://example.org/dataset/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://www.foaf.org/spec/> .
+@prefix exorg: <http://example.org/org#> .
+@prefix fair: <http://example.org/fair-assessment#> .
+@prefix : <http://example.org/data/> 
+
+exdata:b3kat a dcat:Dataset, prov:Entity ;
+    dct:title "B3Kat - Library Union Catalogues of Bavaria, Berlin and Brandenburg" ;
+    dct:description "Joint Union Catalogue of 200 academic libraries in the german states of Bavaria, Berlin and Brandenburg. The data contains descriptions of 28Mio. titles and 69Mio. holdings available in these libraries. The available data dump in Turtle is approx. 9GB." ;
+    dct:identifier "b3kat" ;
+    dct:creator ex:researchInstitute .
+
+exorg:researchInstitute a foaf:Organization ;
+    foaf:name "Bavarian State Library, Bavarian Library Union, Cooperative Library Network Berlin-Brandenburg" ;
+    foaf:mbox "lod@bsb-muenchen.de";
+
+:kgheartbeat a prov:SoftwareAgent ;
+    foaf:name "KGHeartbeat" ;
+    dct:description "An Open Source Tool for Periodically Evaluating the Quality of Knowledge Graphs" .
+
+:metadataScope a fair:AssessmentScope ;
+    skos:prefLabel "Metadata Scope"@en ;
+    skos:definition "The assessment is focused on the metadata of the digital object."@en .
+    skos:notation "metadata" .
+
+:dataScope a fair:AssessmentScope ;
+    skos:prefLabel "Data Scope"@en ;
+    skos:definition "The assessment is focused on the data of the digital object."@en .
+    skos:notation "data" .
+
+:metadataAndDataScope a fair:AssessmentScope ;
+    skos:prefLabel "Metadata and Data Scope"@en ;
+    skos:definition "The assessment is focused on both the metadata and the data of the digital object."@en .
+    skos:notation "(meta)data" .
+
+
+:F1M a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "Unique and persistent ID"@en ;
+    skos:notation "F1-M" ;
+    skos:definition "Assign a globally unique and persistent identifier to (meta)data."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:F1D a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "URIs dereferenceability"@en ;
+    skos:notation "F1-D" ;
+    skos:definition "Assign a globally unique and persistent identifier to (meta)data."@en ;
+    fair:appliesTo :dataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:F2aM a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "Metadata availability via standard primary sources"@en ;
+    skos:notation "F2a-M" ;
+    skos:definition "Describe data using rich metadata"@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:F2bM a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "Metadata availability for all the attributes covered in the FAIR score computation"@en ;
+    skos:notation "F2b-M" ;
+    skos:definition "Describe data using rich metadata"@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:F3M a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "Data referrable via a DOI"@en ;
+    skos:notation "F3-M" ;
+    skos:definition "Metadata must include the identifier of the described data."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:F4M a fair:SubPrinciple ;
+    skos:broader :Findable ;
+    skos:prefLabel "Metadata registered in a searchable engine"@en ;
+    skos:notation "F4-M" ;
+    skos:definition "Ensure (meta)data are indexed in searchable repositories."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:A11D a fair:SubPrinciple ;
+    skos:broader :Accessible ;
+    skos:prefLabel "Working access point(s)"@en ;
+    skos:notation "A1.1-D" ;
+    skos:definition "The protocol should be open, freely implementable, and universally usable."@en ;
+    fair:appliesTo :dataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:A11M a fair:SubPrinciple ;
+    skos:broader :Accessible ;
+    skos:prefLabel "Metadata availability via working primary sources"@en ;
+    skos:notation "A1.1-M" ;
+    skos:definition "The protocol should be open, freely implementable, and universally usable."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:A12 a fair:SubPrinciple ;
+    skos:broader :Accessible ;
+    skos:prefLabel "Authentication & HTTPS support"@en ;
+    skos:notation "A1.2" ;
+    skos:definition "It should support authentication and authorization if needed."@en ;
+    fair:appliesTo :metadataAndDataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:A2M a fair:SubPrinciple ;
+    skos:broader :Accessible ;
+    skos:prefLabel "Registered in search engines"@en ;
+    skos:notation "A2-M" ;
+    skos:definition "Metadata should remain available even when the data are no longer hosted."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:I1D a fair:SubPrinciple ;
+    skos:broader :Interoperable ;
+    skos:prefLabel "Standard & open representation format"@en ;
+    skos:notation "I1-D" ;
+    skos:definition "Represent knowledge using formal, shared, and accessible languages"@en ;
+    fair:appliesTo :dataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:I1M a fair:SubPrinciple ;
+    skos:broader :Interoperable ;
+    skos:prefLabel "Metadata are described with VoID/DCAT predicates"@en ;
+    skos:notation "I1-M" ;
+    skos:definition "Represent knowledge using formal, shared, and accessible languages."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:I2 a fair:SubPrinciple ;
+    skos:broader :Interoperable ;
+    skos:prefLabel "Use of FAIR vocabularies"@en ;
+    skos:notation "I2" ;
+    skos:definition "Rely on vocabularies that conform to FAIR standards."@en
+    fair:appliesTo :metadataAndDataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:I3D a fair:SubPrinciple ;
+    skos:broader :Interoperable ;
+    skos:prefLabel "Degree of connection"@en ;
+    skos:notation "I3-D" ;
+    skos:definition "Include qualified references to other (meta)data."@en ;
+    fair:appliesTo :DataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:R11 a fair:SubPrinciple ;
+    skos:broader :Reusable ;
+    skos:prefLabel "Any license retrievable via any primary source"@en ;
+    skos:notation "R1.1" ;
+    skos:definition "Attach a clear and accessible usage license."@en ;
+    fair:appliesTo :metadataAndDataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:R12 a fair:SubPrinciple ;
+    skos:broader :Reusable ;
+    skos:prefLabel "Publisher details (sources, authors, contributors)"@en ;
+    skos:notation "R1.2" ;
+    skos:definition "Record provenance information."@en ;
+    fair:appliesTo :metadataAndDataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:R13D a fair:SubPrinciple ;
+    skos:broader :Reusable ;
+    skos:prefLabel "Data organized in standardized ways"@en ;
+    skos:notation "R1.3-D" ;
+    skos:definition "Conform to domain-relevant community standards."@en ;
+    fair:appliesTo :dataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:R13M a fair:SubPrinciple ;
+    skos:broader :Reusable ;
+    skos:prefLabel "Metadata are described with VoID/DCAT predicates"@en ;
+    skos:notation "R1.3-M" ;
+    skos:definition "Conform to domain-relevant community standards."@en ;
+    fair:appliesTo :metadataScope ;
+    dct:source <https://doi.org/10.1145/3746252.3761092> .
+
+:Pass a fair:TestOutcome ;
+    skos:prefLabel "Pass"@en ;
+    skos:definition "The resource meets the subprinciple criteria."@en .
+
+:Fail a fair:TestOutcome ;
+    skos:prefLabel "Fail"@en ;
+    skos:definition "The resource does not meet the subprinciple criteria."@en .
+
+:PartialPass a fair:TestOutcome ;
+    skos:prefLabel "Partial Pass"@en ;
+    skos:definition "The resource partially meets the subprinciple criteria."@en .
+
+:Indeterminate a fair:TestOutcome ;
+    skos:prefLabel "Indeterminate"@en ;
+    skos:definition "It is not possible to determine if the resource meets the subprinciple criteria, due to insufficient or ambiguous information."@en .
+
+:assessment_25jan2026 a fair:FAIRAssessment ;
+    prov:used exdata:b3kat ;
+    prov:wasAssociatedWith :kgheartbeat ;
+    prov:startedAtTime "2026-01-25T09:00:00Z"^^xsd:dateTime ;
+    prov:endedAtTime "2026-01-25T09:30:00Z"^^xsd:dateTime .
+    fair:overallScore "2.34"^^xsd:decimal ;
+    fair:hasSubPrincipleResult 
+        :result_25jan2026_F1M,
+        :result_25jan2026_F1D,
+        :result_25jan2026_F2aM,
+        :result_25jan2026_F2bM,
+        :result_25jan2026_F3M,
+        :result_25jan2026_F4M,
+        :result_25jan2026_A11D,
+        :result_25jan2026_A11M,
+        :result_25jan2026_A12,
+        :result_25jan2026_A2M,
+        :result_25jan2026_I1D,
+        :result_25jan2026_I1M,
+        :result_25jan2026_I2,
+        :result_25jan2026_I3D,
+        :result_25jan2026_R11,
+        :result_25jan2026_R12,
+        :result_25jan2026_R13D,
+        :result_25jan2026_R13M .
+
+:result_25jan2026_F1M a fair:SubPrincipleResult ;
+    fair:forSubPrinciple :F1M ;
+    fair:assessmentScope :metadataScope ;
+    prov:wasGeneratedBy :assessment_25jan2026 ;
+    prov:generatedAtTime "2026-01-25T09:30:00Z"^^xsd:dateTime ;
+    fair:evidance "Metadata uses DOI as persistent identifier." ;
+    fair:testResult :Pass ;
+    fair:value "1"^^xsd:integer ;
