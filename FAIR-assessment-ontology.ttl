@@ -114,11 +114,35 @@ fair:wasAssessedBy a owl:ObjectProperty ;
     rdfs:comment "Links a resource to a FAIR assessment that evaluated it."@en .
 
 # FAIR Assessment Properties
-fair:overallScore a owl:DatatypeProperty ;
+fair:fairScore a owl:DatatypeProperty ;
     rdfs:domain fair:FAIRAssessment ;  
     rdfs:range xsd:decimal ;  
     rdfs:label "overall score"@en ;
     rdfs:comment "An aggregate score for the entire FAIR assessment."@en .
+
+fair:fScore a owl:DatatypeProperty ;
+    rdfs:domain fair:FAIRAssessment ;  
+    rdfs:range xsd:decimal ;  
+    rdfs:label "F score"@en ;
+    rdfs:comment "An aggregate score for the Findable principle."@en .
+
+fair:aScore a owl:DatatypeProperty ;
+    rdfs:domain fair:FAIRAssessment ;  
+    rdfs:range xsd:decimal ;  
+    rdfs:label "A score"@en ;
+    rdfs:comment "An aggregate score for the Accessible principle."@en .
+
+fair:iScore a owl:DatatypeProperty ;
+    rdfs:domain fair:FAIRAssessment ;  
+    rdfs:range xsd:decimal ;  
+    rdfs:label "I score"@en ;
+    rdfs:comment "An aggregate score for the Interoperable principle."@en .
+
+fair:rScore a owl:DatatypeProperty ;
+    rdfs:domain fair:FAIRAssessment ;  
+    rdfs:range xsd:decimal ;  
+    rdfs:label "R score"@en ;
+    rdfs:comment "An aggregate score for the Reusable principle."@en .
 
 fair:hasSubPrincipleResult a owl:ObjectProperty ;
     rdfs:domain fair:FAIRAssessment ;
