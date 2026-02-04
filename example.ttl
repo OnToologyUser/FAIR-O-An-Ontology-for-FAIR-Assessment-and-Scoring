@@ -209,12 +209,49 @@ exorg:researchInstitute a foaf:Organization ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/analyses.py#L1385C1-L1433C17> .
     fair:appliesScoringFunction :derefRatio .
 
+:algF2aM a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "checks whether at least one access mechanism is provided for the knowledge graph. It assigns a value of 1 to the SPARQL indication if a SPARQL endpoint URL is present, and a value of 1 to the VoID indication if a VoID URL is present; otherwise, both are set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L27-L29> .
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algF2bM a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "the arithmetic mean of nine binary indicators—SPARQL availability, DOI presence, data dump availability, verifiability information (checking if at least an author from metadata or query, the contributors, the publishers or source are available), media type specification, license declaration, vocabulary usage, presence of links, and VoID availability—and rounds the resulting value to two decimal places."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L45> .
+    fair:appliesScoringFunction :ratioScoringFunction .
+
+:algF3M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "retrieves metadata for a given knowledge graph identifier and attempts to obtain a DOI from three different sources: the LOD Cloud, Monitoring Resources, and CHeCloud. It first extracts the DOI from the LOD Cloud metadata, then queries Monitoring Resources and CHeCloud independently, logging the retrieved values. The algorithm returns the first DOI that is neither false nor null, following the priority order of LOD Cloud, Monitoring Resources, and CHeCloud; if no valid DOI is found from any source, it returns false."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/API/Aggregator.py#L202-L216> .
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algF4M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "verifies if the knowledge graph is indexed in at least one of the two search engines: LOD Cloud or DataHub."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/API/Aggregator.py#L24-L32> ;
+    fair:appliesScoringFunction :binaryScoringFunction . 
+
+:algA11D a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "evaluates the accessibility of the knowledge graph by checking the availability of a SPARQL endpoint and an RDF dump. If the SPARQL endpoint or a RDF dump is available and operative, a value of 1 is assigned. If one of it is only indicated but not operative, 0.5 is assigned. 0 if is either sparql endpoint and rdf dump are not indicated."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L56-L61>.
+
+
+:ratioScoringFunction a fair:ScoringFunction ;
+    fair:formula "Number of successful conditions / Total number of conditions"^^xsd:string ;
+    fair:minValue "0"^^xsd:decimal ;
+    fair:maxValue "1"^^xsd:decimal ;
+    dct:description "A scoring function that calculates the ratio of successful conditions to the total number of conditions."@en ;
+    skos:prefLabel "Ratio Scoring Function"@en .
+
 :binaryScoringFunction a fair:ScoringFunction ;
     fair:formula "IF condition = 'Satisfied' THEN 1 ELSE 0"^^xsd:string ;
     fair:minValue "0"^^xsd:decimal ;
     fair:maxValue "1"^^xsd:decimal ;
-    dct:description "A scoring function that assigns a score of 1 if the condition is satisfied and 0 otherwise."@en .
-    skos:prefLabel "Binary Scoring Function"@en ;
+    dct:description "A scoring function that assigns a score of 1 if the condition is satisfied and 0 otherwise."@en ;
+    skos:prefLabel "Binary Scoring Function"@en .
 
 :linearCombination a fair:AggregationMethod ;
     fair:formula "Score(P) = (1/n) * sum_{i=1..n}(s_i), where s_i in [0,1] and Score(P) in [0,1].
