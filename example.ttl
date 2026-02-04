@@ -238,6 +238,71 @@ exorg:researchInstitute a foaf:Organization ;
     fair:algorithmDescription "evaluates the accessibility of the knowledge graph by checking the availability of a SPARQL endpoint and an RDF dump. If the SPARQL endpoint or a RDF dump is available and operative, a value of 1 is assigned. If one of it is only indicated but not operative, 0.5 is assigned. 0 if is either sparql endpoint and rdf dump are not indicated."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L56-L61>.
 
+:algA11M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It first checks whether the knowledge graph is listed on either of two search engines: DataHub or LOD Cloud. If the knowledge graph is found on either platform (indicated by receiving valid dictionary metadata from their APIs), the accessibility score is set to 1. If not found on these search engines, the algorithm falls back to checking two alternative availability indicators: whether a SPARQL endpoint is available, or whether a VoID (Vocabulary of Interlinked Datasets) file is available. The accessibility score is set to 1 if at least one of these alternatives is available, otherwise it remains 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L63-L69> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algA12 a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "calculates an accessibility sub-metric (a1_2) based on two security-related factors. First, it checks whether the dataset uses HTTPS or has an available SPARQL endpoint, assigning a score of 1 if either condition is true. Second, it checks the authentication requirement status, assigning a score of 1 if it can be detected as authntication needed or not needed."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L71C1-L74C75> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algA2M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "Checks if the dataset is available on DataHub or LOD Cloud search engines. Additionally, also check if it is on github, zenodo or faircharing "@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L76> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algI1D a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It first checks whether the knowledge graph is listed on DataHub or LOD Cloud search engines. Then it evaluates two conditions: whether the knowledge graph uses a common media type, and whether its metadata media type includes a known semantic format (specifically SPARQL API, or RDF in any case). The interoperability score is set to 1 if either the common media type flag is true or a recognized semantic format is found in the metadata, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L105C1-L109C83> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algI1M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It checks two sources for VoID (Vocabulary of Interlinked Datasets) availability: whether a VoID URL exists in the metadata, and whether a VoID or DCAT description can be retrieved by querying the SPARQL endpoint directly. The final interoperability score is set to 1 if a VoID description is available from either source, otherwise it is set to 0."@en ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L111-L114> .
+
+:algI2 a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It first checks whether the dataset has any vocabularies defined by verifying the vocabularies field in the metadata is not empty. If vocabularies are present, it evaluates whether those vocabularies comply with FAIR (Findable, Accessible, Interoperable, Reusable) principles (checking if it is registered in FAIRSharing catalogue) and assigns the result as the metric value. If no vocabularies are defined, the metric is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L116C1-L117C118> ;
+    fair:appliesScoringFunction :ratioScoringFunction .
+
+:algI3D a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "f the knowledge graph is available on a search engine, it checks whether the degree of connection to other datasets is greater than zero, setting the metric to 1 if true and 0 otherwise, with error handling for type conversion issues. If the knowledge graph is not on a search engine, it alternatively checks for the presence of interlinking through two methods: owl:sameAs links or SKOS mapping relations. The metric is set to 1 if either of these interlinking indicators has a value greater than zero, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L119-L127> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algR11 a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It evaluates three possible sources of licensing information: whether license metadata is present and valid, whether a license can be retrieved through a query, and whether a human-readable license is available and confirmed. The final reusability score is set to 1 if licensing information is available from at least one of these three sources, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L84-L87> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algR12 a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It evaluates five possible sources of provenance data: author information obtained through a query, author information from metadata (excluding entries where both name and email are marked as absent), contributor information, publisher information, and source attribution (checking if at least one of name, web address, or email is present). The final score is set to 1 if any of these five provenance indicators contains valid information, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L89> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algR13D a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It checks two conditions: whether the knowledge graph uses a common media type, and whether the metadata media type includes a recognized semantic format (specifically SPARQL API or RDF). The final score is set to 1 if either the common media type flag is true or a known semantic format is detected, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L91-L93> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
+
+:algR13M a fair:CalculationAlgorithm ;
+    fair:implementedBy :kgheartbeat ;
+    fair:algorithmDescription "It checks two sources for VoID (Vocabulary of Interlinked Datasets) availability: whether a VoID URL exists in the metadata, and whether a VoID or DCAT description can be retrieved by querying the SPARQL endpoint directly. The final interoperability score is set to 1 if a VoID description is available from either source, otherwise it is set to 0."@en ;
+    fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L95C1-L98C92> ;
+    fair:appliesScoringFunction :binaryScoringFunction .
 
 :ratioScoringFunction a fair:ScoringFunction ;
     fair:formula "Number of successful conditions / Total number of conditions"^^xsd:string ;
