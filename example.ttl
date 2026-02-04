@@ -197,9 +197,9 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algF1M a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "Checks whether the Knowledge Graph, identified by its KG identifier, is indexed in the Linked Open Data Cloud, DataHub or CHeCLOUD search engines.
-        In parallel, it verifies the presence of a Digital Object Identifier (DOI) associated with the same Knowledge Graph.
-        If at least one of these two conditions holds—namely, the Knowledge Graph is discoverable via the search engine or it is associated with a DOI."@en ;
+    fair:algorithmDescription "Checks whether the dataset, identified by its dataset identifier, is indexed in the Linked Open Data Cloud, DataHub or CHeCLOUD search engines.
+        In parallel, it verifies the presence of a Digital Object Identifier (DOI) associated with the same dataset.
+        If at least one of these two conditions holds—namely, the dataset is discoverable via the search engine or it is associated with a DOI."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L15-L19> .
     fair:appliesScoringFunction :binaryScoringFunction .
 
@@ -211,7 +211,7 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algF2aM a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "checks whether at least one access mechanism is provided for the knowledge graph. It assigns a value of 1 to the SPARQL indication if a SPARQL endpoint URL is present, and a value of 1 to the VoID indication if a VoID URL is present; otherwise, both are set to 0."@en ;
+    fair:algorithmDescription "checks whether at least one access mechanism is provided for the dataset. It assigns a value of 1 to the SPARQL indication if a SPARQL endpoint URL is present, and a value of 1 to the VoID indication if a VoID URL is present; otherwise, both are set to 0."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L27-L29> .
     fair:appliesScoringFunction :binaryScoringFunction .
 
@@ -223,24 +223,24 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algF3M a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "retrieves metadata for a given knowledge graph identifier and attempts to obtain a DOI from three different sources: the LOD Cloud, Monitoring Resources, and CHeCloud. It first extracts the DOI from the LOD Cloud metadata, then queries Monitoring Resources and CHeCloud independently, logging the retrieved values. The algorithm returns the first DOI that is neither false nor null, following the priority order of LOD Cloud, Monitoring Resources, and CHeCloud; if no valid DOI is found from any source, it returns false."@en ;
+    fair:algorithmDescription "retrieves metadata for a given dataset identifier and attempts to obtain a DOI from three different sources: the LOD Cloud, Monitoring Resources, and CHeCloud. It first extracts the DOI from the LOD Cloud metadata, then queries Monitoring Resources and CHeCloud independently, logging the retrieved values. The algorithm returns the first DOI that is neither false nor null, following the priority order of LOD Cloud, Monitoring Resources, and CHeCloud; if no valid DOI is found from any source, it returns false."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/API/Aggregator.py#L202-L216> .
     fair:appliesScoringFunction :binaryScoringFunction .
 
 :algF4M a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "verifies if the knowledge graph is indexed in at least one of the two search engines: LOD Cloud or DataHub."@en ;
+    fair:algorithmDescription "verifies if the dataset is indexed in at least one of the two search engines: LOD Cloud or DataHub."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/API/Aggregator.py#L24-L32> ;
     fair:appliesScoringFunction :binaryScoringFunction . 
 
 :algA11D a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "evaluates the accessibility of the knowledge graph by checking the availability of a SPARQL endpoint and an RDF dump. If the SPARQL endpoint or a RDF dump is available and operative, a value of 1 is assigned. If one of it is only indicated but not operative, 0.5 is assigned. 0 if is either sparql endpoint and rdf dump are not indicated."@en ;
+    fair:algorithmDescription "evaluates the accessibility of the dataset by checking the availability of a SPARQL endpoint and an RDF dump. If the SPARQL endpoint or a RDF dump is available and operative, a value of 1 is assigned. If one of it is only indicated but not operative, 0.5 is assigned. 0 if is either sparql endpoint and rdf dump are not indicated."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L56-L61>.
 
 :algA11M a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "It first checks whether the knowledge graph is listed on either of two search engines: DataHub or LOD Cloud. If the knowledge graph is found on either platform (indicated by receiving valid dictionary metadata from their APIs), the accessibility score is set to 1. If not found on these search engines, the algorithm falls back to checking two alternative availability indicators: whether a SPARQL endpoint is available, or whether a VoID (Vocabulary of Interlinked Datasets) file is available. The accessibility score is set to 1 if at least one of these alternatives is available, otherwise it remains 0."@en ;
+    fair:algorithmDescription "It first checks whether the dataset is listed on either of two search engines: DataHub or LOD Cloud. If the dataset is found on either platform (indicated by receiving valid dictionary metadata from their APIs), the accessibility score is set to 1. If not found on these search engines, the algorithm falls back to checking two alternative availability indicators: whether a SPARQL endpoint is available, or whether a VoID (Vocabulary of Interlinked Datasets) file is available. The accessibility score is set to 1 if at least one of these alternatives is available, otherwise it remains 0."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L63-L69> ;
     fair:appliesScoringFunction :binaryScoringFunction .
 
@@ -258,7 +258,7 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algI1D a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "It first checks whether the knowledge graph is listed on DataHub or LOD Cloud search engines. Then it evaluates two conditions: whether the knowledge graph uses a common media type, and whether its metadata media type includes a known semantic format (specifically SPARQL API, or RDF in any case). The interoperability score is set to 1 if either the common media type flag is true or a recognized semantic format is found in the metadata, otherwise it is set to 0."@en ;
+    fair:algorithmDescription "It first checks whether the dataset is listed on DataHub or LOD Cloud search engines. Then it evaluates two conditions: whether the dataset uses a common media type, and whether its metadata media type includes a known semantic format (specifically SPARQL API, or RDF in any case). The interoperability score is set to 1 if either the common media type flag is true or a recognized semantic format is found in the metadata, otherwise it is set to 0."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L105C1-L109C83> ;
     fair:appliesScoringFunction :binaryScoringFunction .
 
@@ -276,7 +276,7 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algI3D a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "f the knowledge graph is available on a search engine, it checks whether the degree of connection to other datasets is greater than zero, setting the metric to 1 if true and 0 otherwise, with error handling for type conversion issues. If the knowledge graph is not on a search engine, it alternatively checks for the presence of interlinking through two methods: owl:sameAs links or SKOS mapping relations. The metric is set to 1 if either of these interlinking indicators has a value greater than zero, otherwise it is set to 0."@en ;
+    fair:algorithmDescription "If the dataset is available on a search engine, it checks whether the degree of connection to other datasets is greater than zero, setting the metric to 1 if true and 0 otherwise, with error handling for type conversion issues. If the dataset is not on a search engine, it alternatively checks for the presence of interlinking through two methods: owl:sameAs links or SKOS mapping relations. The metric is set to 1 if either of these interlinking indicators has a value greater than zero, otherwise it is set to 0."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L119-L127> ;
     fair:appliesScoringFunction :binaryScoringFunction .
 
@@ -294,7 +294,7 @@ exorg:researchInstitute a foaf:Organization ;
 
 :algR13D a fair:CalculationAlgorithm ;
     fair:implementedBy :kgheartbeat ;
-    fair:algorithmDescription "It checks two conditions: whether the knowledge graph uses a common media type, and whether the metadata media type includes a recognized semantic format (specifically SPARQL API or RDF). The final score is set to 1 if either the common media type flag is true or a known semantic format is detected, otherwise it is set to 0."@en ;
+    fair:algorithmDescription "It checks two conditions: whether the dataset uses a common media type, and whether the metadata media type includes a recognized semantic format (specifically SPARQL API or RDF). The final score is set to 1 if either the common media type flag is true or a known semantic format is detected, otherwise it is set to 0."@en ;
     fair:sourceCode <https://github.com/isislab-unisa/KGHeartBeat/blob/ffa6aa9fa6101487daec3f90d0d1894c1750aacb/src/evaluate_fairness.py#L91-L93> ;
     fair:appliesScoringFunction :binaryScoringFunction .
 
