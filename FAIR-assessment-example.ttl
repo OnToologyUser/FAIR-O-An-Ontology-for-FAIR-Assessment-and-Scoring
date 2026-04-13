@@ -1,0 +1,130 @@
+@prefix : <http://example.org/data/> .
+@prefix fairAss: <http://example.org/fair-assessment#> .
+@prefix fairVocab: <https://w3id.org/fair/principles/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+################################################################################
+# Example: Climate Research Dataset with Multiple Assessments Over Time
+################################################################################
+
+# The Dataset Being Assessed
+:climateDataset2024 a dcat:Dataset, prov:Entity ;
+    dct:title "Global Climate Observations 2024"@en ;
+    dct:description "Comprehensive climate data collected from weather stations worldwide"@en ;
+    dct:identifier <https://doi.org/10.1234/climate2024> ;
+    dct:creator :researchInstitute ;
+    dct:issued "2024-01-01"^^xsd:date ;
+    dcat:distribution :csvDistribution ;
+    # ── FIXED: wasAssessedBy is on the dataset, linking to the assessment
+    fairAss:wasAssessedBy :assessment_jan2024, :assessment_feb2025 .
+
+:csvDistribution a dcat:Distribution ;
+    dcat:downloadURL <https://example.org/data/climate2024.csv> ;
+    dcat:mediaType "text/csv" ;
+    dct:format "CSV" ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
+:researchInstitute a foaf:Organization ;
+    foaf:name "International Climate Research Institute" .
+
+################################################################################
+# First Assessment (January 2024) - Initial Evaluation
+################################################################################
+
+:assessment_jan2024 a fairAss:FAIRAssessment ;
+    prov:used :climateDataset2024 ;
+    prov:wasAssociatedWith :automaticEvaluator ;
+    prov:startedAtTime "2024-01-15T10:00:00Z"^^xsd:dateTime ;
+    prov:endedAtTime   "2024-01-15T10:30:00Z"^^xsd:dateTime ;
+    # ── FIXED: overallScore → fairScore (correct property name from the ontology)
+    fairAss:fairScore "0.75"^^xsd:decimal ;
+    fairAss:hasSubPrincipleResult
+        :result_jan2024_F1,
+        :result_jan2024_F2,
+        :result_jan2024_I2_metadata,
+        :result_jan2024_I2_data,
+        :result_jan2024_A1_metadata,
+        :result_jan2024_A1_data,
+        :result_jan2024_R1_1 .
+
+:automaticEvaluator a prov:SoftwareAgent ;
+    foaf:name "FAIR Evaluator" ;
+    dct:description "Automated FAIR assessment tool" .
+
+# --- Findable Results ---
+
+:result_jan2024_F1 a fair_ass:SubPrincipleResult ;
+    fair_ass:forSubPrinciple fair_vocab:F1 ;
+    fair_ass:assessmentScope fair_ass:MetadataScope ;
+    fair_ass:testResult fair_ass:Pass ;
+    fair_ass:value "1"^^xsd:decimal ;
+    fair_ass:evidence "Dataset has persistent DOI identifier (10.1234/climate2024)" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+:result_jan2024_F2 a fairAss:SubPrincipleResult ;
+    # ── FIXED: fair:F2 → fair-vocab:F2
+    fairAss:forSubPrinciple fairVocab:F2 ;
+    fairAss:assessmentScope fairAss:MetadataScope ;
+    fairAss:testResult fairAss:Pass ;
+    fairAss:value "1"^^xsd:decimal ;
+    fairAss:evidence "Rich metadata provided via DCAT and Dublin Core terms" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+# --- Interoperable Results ---
+
+:result_jan2024_I2_metadata a fairAss:SubPrincipleResult ;
+    # ── FIXED: fair:I2 → fair-vocab:I2
+    fairAss:forSubPrinciple fairVocab:I2 ;
+    fairAss:assessmentScope fairAss:MetadataScope ;
+    fairAss:testResult fairAss:Pass ;
+    fairAss:value "1"^^xsd:decimal ;
+    fairAss:evidence "Metadata uses DCAT and Dublin Core, both FAIR-compliant vocabularies" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+:result_jan2024_I2_data a fairAss:SubPrincipleResult ;
+    fairAss:forSubPrinciple fairVocab:I2 ;
+    fairAss:assessmentScope fairAss:DataScope ;
+    fairAss:testResult fairAss:Fail ;
+    fairAss:value "0"^^xsd:decimal ;
+    fairAss:evidence "CSV format does not use a formally defined FAIR vocabulary" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+# --- Accessible Results ---
+
+:result_jan2024_A1_metadata a fairAss:SubPrincipleResult ;
+    fairAss:forSubPrinciple fairVocab:A1 ;
+    fairAss:assessmentScope fairAss:MetadataScope ;
+    fairAss:testResult fairAss:Pass ;
+    fairAss:value "1"^^xsd:decimal ;
+    fairAss:evidence "Metadata retrievable via standard HTTPS protocol" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+:result_jan2024_A1_data a fairAss:SubPrincipleResult ;
+    fairAss:forSubPrinciple fairVocab:A1 ;
+    fairAss:assessmentScope fairAss:DataScope ;
+    fairAss:testResult fairAss:Pass ;
+    fairAss:value "1"^^xsd:decimal ;
+    fairAss:evidence "Data downloadable via open HTTPS URL" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
+
+:result_jan2024_R1_1 a fairAss:SubPrincipleResult ;
+    fairAss:forSubPrinciple fairVocab:R1.1 ;
+    fairAss:assessmentScope fairAss:DataAndMetadata ;
+    fairAss:testResult fairAss:Pass ;
+    fairAss:value "1"^^xsd:decimal ;
+    fairAss:evidence "CC BY 4.0 license declared in distribution metadata" ;
+    prov:wasGeneratedBy :assessment_jan2024 ;
+    prov:generatedAtTime "2024-01-15T10:30:00Z"^^xsd:dateTime .
+
