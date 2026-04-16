@@ -53,7 +53,23 @@ fairAss:DataAndMetadata a fairAss:AssessmentScope ;
 fairAss:TestOutcome a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Test Outcome"@en ;
-    rdfs:comment "The result of a FAIR test (e.g., Pass, Fail, or Indeterminate)."@en .
+    rdfs:comment "The result of a FAIR test (e.g., Pass, Fail, or Indeterminate)."@en ;
+    owl:oneOf ( fairAss:Pass fairAss:Fail fairAss:Indeterminate ) .
+
+fairAss:Pass a owl:NamedIndividual, fairAss:TestOutcome ;
+    rdfs:label "Pass"@en ;
+    skos:notation "PASS" ;
+    rdfs:comment "The test was fully satisfied (score = 1)."@en .
+
+fairAss:Fail a owl:NamedIndividual, fairAss:TestOutcome ;
+    rdfs:label "Fail"@en ;
+    skos:notation "FAIL" ;
+    rdfs:comment "The test was not satisfied (score = 0)."@en .
+
+fairAss:Indeterminate a owl:NamedIndividual, fairAss:TestOutcome ;
+    rdfs:label "Indeterminate"@en ;
+    skos:notation "INDETERMINATE" ;
+    rdfs:comment "The test was partially satisfied (0 < score < 1)."@en .
 
 fairAss:ScoringFunction a owl:Class ;
     rdfs:subClassOf prov:Entity ;
@@ -69,7 +85,6 @@ fairAss:AggregationMethod a owl:Class ;
     rdfs:subClassOf prov:Plan ;
     rdfs:label "Aggregation Method"@en ;
     rdfs:comment "A method for combining individual sub-principle scores into principle-level or overall scores."@en .
-
 
 ################################################################################
 # Object Properties
@@ -89,12 +104,12 @@ fairAss:hasSubPrincipleResult a owl:ObjectProperty ;
 
 fairAss:forSubPrinciple a owl:ObjectProperty ;
     rdfs:domain fairAss:SubPrincipleResult ;
-    rdfs:range fair_vocab:FAIR-SubPrinciple ;
+    rdfs:range fairVocab:FAIR-SubPrinciple ;
     rdfs:label "for sub-principle"@en ;
     rdfs:comment "Links a sub-principle result to the specific FAIR sub-principle it evaluates (defined in the official FAIR Vocabulary)."@en .
 
 fairAss:appliesTo a owl:ObjectProperty ;
-    rdfs:domain fair_vocab:FAIR-SubPrinciple ;
+    rdfs:domain fairVocab:FAIR-SubPrinciple ;
     rdfs:range fairAss:AssessmentScope ;
     rdfs:label "applies to"@en ;
     rdfs:comment "Indicates whether a sub-principle applies to data, metadata, or both."@en .
