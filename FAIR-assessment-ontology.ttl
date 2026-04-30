@@ -41,13 +41,13 @@ fairAss:AssessmentScope a owl:Class ;
     rdfs:label "Assessment Scope"@en ;
     rdfs:comment "The scope of what is being assessed: data, metadata, or both."@en .
 
-fairAss:DataScope a fairAss:AssessmentScope ;
+fairAss:DataScope a owl:NamedIndividual, fairAss:AssessmentScope ;
     rdfs:label "Data"@en .
 
-fairAss:MetadataScope a fairAss:AssessmentScope ;
+fairAss:MetadataScope a owl:NamedIndividual, fairAss:AssessmentScope ;
     rdfs:label "Metadata"@en .
 
-fairAss:DataAndMetadata a fairAss:AssessmentScope ;
+fairAss:DataAndMetadata a owl:NamedIndividual, fairAss:AssessmentScope ;
     rdfs:label "Data and Metadata"@en .
 
 fairAss:TestOutcome a owl:Class ;
