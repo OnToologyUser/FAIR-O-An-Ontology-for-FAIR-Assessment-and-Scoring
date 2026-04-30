@@ -9,7 +9,6 @@ import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Set, Tuple
 from urllib.parse import quote
-
 import pandas as pd
 
 
