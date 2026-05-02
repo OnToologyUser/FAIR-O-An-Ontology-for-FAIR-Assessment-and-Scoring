@@ -15,10 +15,10 @@
     dct:created "2025-02-01"^^xsd:date ;
     dct:creator "Gabriele Tuozzo" ;
     owl:versionInfo "1.0" ;
-    rdfs:comment "This ontology provides comprehensive FAIR assessment modeling. It reuses the official FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for principle and sub-principle definitions."@en ;
-    owl:imports <http://www.w3.org/ns/prov#> ,
-                <http://www.w3.org/2004/02/skos/core#> ,
-                <https://w3id.org/fair/principles/terms/FAIR-Vocabulary> .
+    rdfs:comment "This ontology provides comprehensive FAIR assessment modeling. It reuses the official FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for principle and sub-principle definitions."@en .
+    #owl:imports <http://www.w3.org/ns/prov#> ,
+                #<http://www.w3.org/2004/02/skos/core#> ,
+                #<https://w3id.org/fair/principles/terms/FAIR-Vocabulary> .
 
 ################################################################################
 # Classes
