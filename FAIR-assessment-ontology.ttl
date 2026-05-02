@@ -18,7 +18,6 @@
     rdfs:comment "This ontology provides comprehensive FAIR assessment modeling. It reuses the official FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for principle and sub-principle definitions."@en ;
     owl:imports <http://www.w3.org/ns/prov#> ,
                 <http://www.w3.org/2004/02/skos/core#> ,
-                <http://purl.org/dc/terms/> ,
                 <https://w3id.org/fair/principles/terms/FAIR-Vocabulary> .
 
 ################################################################################
