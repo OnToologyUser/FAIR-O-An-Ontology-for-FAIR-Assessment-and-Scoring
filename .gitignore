@@ -212,3 +212,4 @@ __marimo__/
 personal_rag.py
 faiss_index/
 !.htaccess
+!.github
