@@ -1,0 +1,37 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?assessment ?aggregationMethod ?aggregationMethodLabel ?formula ?fairScore ?fScore ?aScore ?iScore ?rScore
+WHERE {
+  ?assessment a fairo:FAIRAssessment ;
+              fairo:usesAggregationMethod ?aggregationMethod .
+
+  OPTIONAL {
+    ?aggregationMethod rdfs:label ?aggregationMethodLabel .
+  }
+
+  OPTIONAL {
+    ?aggregationMethod fairo:formula ?formula .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:fairScore ?fairScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:fScore ?fScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:aScore ?aScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:iScore ?iScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:rScore ?rScore .
+  }
+}
+ORDER BY ?assessment

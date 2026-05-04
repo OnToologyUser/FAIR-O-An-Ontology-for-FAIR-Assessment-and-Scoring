@@ -1,0 +1,27 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?digitalObject ?title ?assessment ?subPrinciple ?result ?value ?outcome ?outcomeLabel
+WHERE {
+  ?digitalObject fairo:wasAssessedBy ?assessment .
+
+  ?assessment a fairo:FAIRAssessment ;
+              fairo:hasSubPrincipleResult ?result .
+
+  ?result fairo:forSubPrinciple ?subPrinciple ;
+          fairo:testResult ?outcome .
+
+  OPTIONAL {
+    ?result fairo:value ?value .
+  }
+
+  OPTIONAL {
+    ?digitalObject dct:title ?title .
+  }
+
+  OPTIONAL {
+    ?outcome rdfs:label ?outcomeLabel .
+  }
+}
+ORDER BY ?subPrinciple ?outcome ?digitalObject

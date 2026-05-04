@@ -1,0 +1,32 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT ?assessment ?fairScore ?fScore ?aScore ?iScore ?rScore ?endTime
+WHERE {
+  ?assessment a fairo:FAIRAssessment .
+
+  OPTIONAL {
+    ?assessment fairo:fairScore ?fairScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:fScore ?fScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:aScore ?aScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:iScore ?iScore .
+  }
+
+  OPTIONAL {
+    ?assessment fairo:rScore ?rScore .
+  }
+
+  OPTIONAL {
+    ?assessment prov:endedAtTime ?endTime .
+  }
+}
+ORDER BY ?assessment ?endTime

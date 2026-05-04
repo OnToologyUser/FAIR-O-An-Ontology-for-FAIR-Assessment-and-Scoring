@@ -1,0 +1,16 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+
+SELECT ?assessment ?subPrinciple ?result ?value ?evidence
+WHERE {
+  ?assessment a fairo:FAIRAssessment ;
+              fairo:hasSubPrincipleResult ?result .
+
+  ?result fairo:forSubPrinciple ?subPrinciple ;
+          fairo:testResult fairo:Indeterminate ;
+          fairo:evidence ?evidence .
+
+  OPTIONAL {
+    ?result fairo:value ?value .
+  }
+}
+ORDER BY ?assessment ?subPrinciple

@@ -1,0 +1,23 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?digitalObject ?title ?assessment ?startTime ?endTime
+WHERE {
+  ?digitalObject fairo:wasAssessedBy ?assessment .
+
+  ?assessment a fairo:FAIRAssessment .
+
+  OPTIONAL {
+    ?digitalObject dct:title ?title .
+  }
+
+  OPTIONAL {
+    ?assessment prov:startedAtTime ?startTime .
+  }
+
+  OPTIONAL {
+    ?assessment prov:endedAtTime ?endTime .
+  }
+}
+ORDER BY ?digitalObject ?startTime ?endTime

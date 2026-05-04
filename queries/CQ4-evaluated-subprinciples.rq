@@ -1,0 +1,15 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?assessment ?result ?subPrinciple ?subPrincipleLabel
+WHERE {
+  ?assessment a fairo:FAIRAssessment ;
+              fairo:hasSubPrincipleResult ?result .
+
+  ?result fairo:forSubPrinciple ?subPrinciple .
+
+  OPTIONAL {
+    ?subPrinciple rdfs:label ?subPrincipleLabel .
+  }
+}
+ORDER BY ?assessment ?subPrinciple

@@ -1,0 +1,24 @@
+PREFIX fairo: <https://w3id.org/fair-o#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?assessment ?subPrinciple ?result ?algorithm ?algorithmLabel ?algorithmDescription ?sourceCode
+WHERE {
+  ?assessment a fairo:FAIRAssessment ;
+              fairo:hasSubPrincipleResult ?result .
+
+  ?result fairo:forSubPrinciple ?subPrinciple ;
+          fairo:computedUsing ?algorithm .
+
+  OPTIONAL {
+    ?algorithm rdfs:label ?algorithmLabel .
+  }
+
+  OPTIONAL {
+    ?algorithm fairo:algorithmDescription ?algorithmDescription .
+  }
+
+  OPTIONAL {
+    ?algorithm fairo:sourceCode ?sourceCode .
+  }
+}
+ORDER BY ?assessment ?subPrinciple
