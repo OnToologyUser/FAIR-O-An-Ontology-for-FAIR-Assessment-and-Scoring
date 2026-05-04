@@ -1,13 +1,5 @@
-@prefix : <http://example.org/fair-assessment-shapes#> .
-@prefix fairAss: <http://example.org/fair-assessment#> .
-@prefix fairVocab: <https://w3id.org/fair/principles/terms/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-
-
-@prefix : <http://example.org/fair-assessment-shapes#> .
-@prefix fairAss: <http://example.org/fair-assessment#> .
+@prefix : <http://w3id.org/fair-o-shapes#> .
+@prefix fairo: <https://w3id.org/fair-o#> .
 @prefix fairVocab: <https://w3id.org/fair/principles/terms/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -20,10 +12,10 @@
 
 :FAIRAssessmentShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:FAIRAssessment ;
+    sh:targetClass fairo:FAIRAssessment ;
 
     sh:property [
-        sh:path fairAss:fairScore ;
+        sh:path fairo:fairScore ;
         sh:datatype xsd:decimal ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -33,7 +25,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:fScore ;
+        sh:path fairo:fScore ;
         sh:datatype xsd:decimal ;
         sh:maxCount 1 ;
         sh:minInclusive 0.0 ;
@@ -42,7 +34,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:aScore ;
+        sh:path fairo:aScore ;
         sh:datatype xsd:decimal ;
         sh:maxCount 1 ;
         sh:minInclusive 0.0 ;
@@ -51,7 +43,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:iScore ;
+        sh:path fairo:iScore ;
         sh:datatype xsd:decimal ;
         sh:maxCount 1 ;
         sh:minInclusive 0.0 ;
@@ -60,7 +52,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:rScore ;
+        sh:path fairo:rScore ;
         sh:datatype xsd:decimal ;
         sh:maxCount 1 ;
         sh:minInclusive 0.0 ;
@@ -69,17 +61,17 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:hasSubPrincipleResult ;
-        sh:class fairAss:SubPrincipleResult ;
+        sh:path fairo:hasSubPrincipleResult ;
+        sh:class fairo:SubPrincipleResult ;
         sh:minCount 1 ;
         sh:message "A FAIR assessment must have at least one sub-principle result." ;
     ] ;
 
     sh:property [
-        sh:path fairAss:usesAggregationMethod ;
-        sh:class fairAss:AggregationMethod ;
+        sh:path fairo:usesAggregationMethod ;
+        sh:class fairo:AggregationMethod ;
         sh:maxCount 1 ;
-        sh:message "If present, the aggregation method must be an instance of fairAss:AggregationMethod." ;
+        sh:message "If present, the aggregation method must be an instance of fairo:AggregationMethod." ;
     ] ;
 
     sh:property [
@@ -100,23 +92,23 @@
 
 :AssessedResourceShape
     a sh:NodeShape ;
-    sh:targetSubjectsOf fairAss:wasAssessedBy ;
+    sh:targetSubjectsOf fairo:wasAssessedBy ;
 
     sh:property [
-        sh:path fairAss:wasAssessedBy ;
-        sh:class fairAss:FAIRAssessment ;
+        sh:path fairo:wasAssessedBy ;
+        sh:class fairo:FAIRAssessment ;
         sh:minCount 1 ;
-        sh:message "A resource assessed by fairAss:wasAssessedBy must point to a FAIR assessment." ;
+        sh:message "A resource assessed by fairo:wasAssessedBy must point to a FAIR assessment." ;
     ] .
 
 # Sub-Principle Result Shape
 
 :SubPrincipleResultShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:SubPrincipleResult ;
+    sh:targetClass fairo:SubPrincipleResult ;
 
     sh:property [
-        sh:path fairAss:forSubPrinciple ;
+        sh:path fairo:forSubPrinciple ;
         sh:class fairVocab:FAIR-SubPrinciple ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -124,11 +116,11 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:testResult ;
+        sh:path fairo:testResult ;
         sh:in (
-            fairAss:Pass
-            fairAss:Fail
-            fairAss:Indeterminate
+            fairo:Pass
+            fairo:Fail
+            fairo:Indeterminate
         ) ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -136,11 +128,11 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:assessmentScope ;
+        sh:path fairo:assessmentScope ;
         sh:in (
-            fairAss:DataScope
-            fairAss:MetadataScope
-            fairAss:DataAndMetadata
+            fairo:DataScope
+            fairo:MetadataScope
+            fairo:DataAndMetadata
         ) ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -148,7 +140,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:value ;
+        sh:path fairo:value ;
         sh:datatype xsd:decimal ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -158,15 +150,15 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:evidence ;
+        sh:path fairo:evidence ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:message "A sub-principle result should include textual evidence." ;
     ] ;
 
     sh:property [
-        sh:path fairAss:computedUsing ;
-        sh:class fairAss:CalculationAlgorithm ;
+        sh:path fairo:computedUsing ;
+        sh:class fairo:CalculationAlgorithm ;
         sh:maxCount 1 ;
         sh:message "If present, computedUsing must point to a CalculationAlgorithm." ;
     ] .
@@ -176,18 +168,18 @@
 
 :PassResultShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:SubPrincipleResult ;
+    sh:targetClass fairo:SubPrincipleResult ;
 
     sh:sparql [
         a sh:SPARQLConstraint ;
         sh:message "If testResult is Pass, the value must be exactly 1.0." ;
         sh:select """
-            PREFIX fairAss: <http://example.org/fair-assessment#>
+            PREFIX fairo: <https://w3id.org/fair-o#>
 
             SELECT $this
             WHERE {
-                $this fairAss:testResult fairAss:Pass ;
-                      fairAss:value ?value .
+                $this fairo:testResult fairo:Pass ;
+                      fairo:value ?value .
                 FILTER (?value != 1.0)
             }
         """ ;
@@ -195,18 +187,18 @@
 
 :FailResultShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:SubPrincipleResult ;
+    sh:targetClass fairo:SubPrincipleResult ;
 
     sh:sparql [
         a sh:SPARQLConstraint ;
         sh:message "If testResult is Fail, the value must be exactly 0.0." ;
         sh:select """
-            PREFIX fairAss: <http://example.org/fair-assessment#>
+            PREFIX fairo: <https://w3id.org/fair-o#>
 
             SELECT $this
             WHERE {
-                $this fairAss:testResult fairAss:Fail ;
-                      fairAss:value ?value .
+                $this fairo:testResult fairo:Fail ;
+                      fairo:value ?value .
                 FILTER (?value != 0.0)
             }
         """ ;
@@ -214,18 +206,18 @@
 
 :IndeterminateResultShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:SubPrincipleResult ;
+    sh:targetClass fairo:SubPrincipleResult ;
 
     sh:sparql [
         a sh:SPARQLConstraint ;
         sh:message "If testResult is Indeterminate, the value must be greater than 0 and less than 1." ;
         sh:select """
-            PREFIX fairAss: <http://example.org/fair-assessment#>
+            PREFIX fairo: <https://w3id.org/fair-o#>
 
             SELECT $this
             WHERE {
-                $this fairAss:testResult fairAss:Indeterminate ;
-                      fairAss:value ?value .
+                $this fairo:testResult fairo:Indeterminate ;
+                      fairo:value ?value .
                 FILTER (?value <= 0.0 || ?value >= 1.0)
             }
         """ ;
@@ -236,12 +228,12 @@
 
 :AssessmentScopeShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:AssessmentScope ;
+    sh:targetClass fairo:AssessmentScope ;
 
     sh:in (
-        fairAss:DataScope
-        fairAss:MetadataScope
-        fairAss:DataAndMetadata
+        fairo:DataScope
+        fairo:MetadataScope
+        fairo:DataAndMetadata
     ) ;
 
     sh:message "Assessment scope must be one of DataScope, MetadataScope, or DataAndMetadata." .
@@ -251,12 +243,12 @@
 
 :TestOutcomeShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:TestOutcome ;
+    sh:targetClass fairo:TestOutcome ;
 
     sh:in (
-        fairAss:Pass
-        fairAss:Fail
-        fairAss:Indeterminate
+        fairo:Pass
+        fairo:Fail
+        fairo:Indeterminate
     ) ;
 
     sh:message "Test outcome must be one of Pass, Fail, or Indeterminate." .
@@ -269,11 +261,11 @@
     sh:targetClass fairVocab:FAIR-SubPrinciple ;
 
     sh:property [
-        sh:path fairAss:appliesTo ;
+        sh:path fairo:appliesTo ;
         sh:in (
-            fairAss:DataScope
-            fairAss:MetadataScope
-            fairAss:DataAndMetadata
+            fairo:DataScope
+            fairo:MetadataScope
+            fairo:DataAndMetadata
         ) ;
         sh:maxCount 1 ;
         sh:message "A FAIR sub-principle may specify whether it applies to data, metadata, or both." ;
@@ -283,10 +275,10 @@
 
 :ScoringFunctionShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:ScoringFunction ;
+    sh:targetClass fairo:ScoringFunction ;
 
     sh:property [
-        sh:path fairAss:minValue ;
+        sh:path fairo:minValue ;
         sh:datatype xsd:decimal ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -294,7 +286,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:maxValue ;
+        sh:path fairo:maxValue ;
         sh:datatype xsd:decimal ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -302,7 +294,7 @@
     ] ;
 
     sh:property [
-        sh:path fairAss:formula ;
+        sh:path fairo:formula ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
         sh:message "A scoring function formula must be a string." ;
@@ -312,12 +304,12 @@
         a sh:SPARQLConstraint ;
         sh:message "The minimum value of a scoring function must not be greater than its maximum value." ;
         sh:select """
-            PREFIX fairAss: <http://example.org/fair-assessment#>
+            PREFIX fairo: <https://w3id.org/fair-o#>
 
             SELECT $this
             WHERE {
-                $this fairAss:minValue ?min ;
-                      fairAss:maxValue ?max .
+                $this fairo:minValue ?min ;
+                      fairo:maxValue ?max .
                 FILTER (?min > ?max)
             }
         """ ;
@@ -327,31 +319,31 @@
 
 :CalculationAlgorithmShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:CalculationAlgorithm ;
+    sh:targetClass fairo:CalculationAlgorithm ;
 
     sh:property [
-        sh:path fairAss:algorithmDescription ;
+        sh:path fairo:algorithmDescription ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:message "A calculation algorithm should have a human-readable description." ;
     ] ;
 
     sh:property [
-        sh:path fairAss:sourceCode ;
+        sh:path fairo:sourceCode ;
         sh:datatype xsd:anyURI ;
         sh:maxCount 1 ;
         sh:message "Source code must be provided as a URI." ;
     ] ;
 
     sh:property [
-        sh:path fairAss:appliesScoringFunction ;
-        sh:class fairAss:ScoringFunction ;
+        sh:path fairo:appliesScoringFunction ;
+        sh:class fairo:ScoringFunction ;
         sh:maxCount 1 ;
         sh:message "If present, appliesScoringFunction must point to a ScoringFunction." ;
     ] ;
 
     sh:property [
-        sh:path fairAss:implementedBy ;
+        sh:path fairo:implementedBy ;
         sh:class prov:SoftwareAgent ;
         sh:maxCount 1 ;
         sh:message "If present, implementedBy must point to a prov:SoftwareAgent." ;
@@ -361,10 +353,10 @@
 
 :AggregationMethodShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:AggregationMethod ;
+    sh:targetClass fairo:AggregationMethod ;
 
     sh:property [
-        sh:path fairAss:formula ;
+        sh:path fairo:formula ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
         sh:message "An aggregation formula must be represented as a string." ;
@@ -374,11 +366,11 @@
 
 :SubPrincipleResultAttachedToAssessmentShape
     a sh:NodeShape ;
-    sh:targetClass fairAss:SubPrincipleResult ;
+    sh:targetClass fairo:SubPrincipleResult ;
 
     sh:property [
-        sh:path [ sh:inversePath fairAss:hasSubPrincipleResult ] ;
-        sh:class fairAss:FAIRAssessment ;
+        sh:path [ sh:inversePath fairo:hasSubPrincipleResult ] ;
+        sh:class fairo:FAIRAssessment ;
         sh:minCount 1 ;
         sh:message "Every sub-principle result should be linked from at least one FAIR assessment." ;
     ] .
