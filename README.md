@@ -9,7 +9,6 @@ FAIR-O provides a structured and extensible model for representing the evaluatio
 ## Overview
 
 - Ontology IRI: https://w3id.org/fair-o
-- Version IRI: https://w3id.org/fair-o/1.0.0
 - License: CC BY 4.0
 - Imports: PROV-O, SKOS, FAIR Vocabulary
 
