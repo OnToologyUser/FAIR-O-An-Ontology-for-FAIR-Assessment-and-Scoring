@@ -214,3 +214,4 @@ faiss_index/
 !.htaccess
 !.github
 /data/*.csv
+CQ*.csv
