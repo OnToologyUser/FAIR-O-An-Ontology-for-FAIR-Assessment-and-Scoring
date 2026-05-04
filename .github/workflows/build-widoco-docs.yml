@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "FAIR-O.ttl"
+      - "widoco-sections/**"
       - ".github/workflows/build-widoco-docs.yml"
 
   workflow_dispatch:
@@ -31,7 +32,7 @@ jobs:
           cp FAIR-O.ttl /tmp/widoco-input/FAIR-O.ttl
           chmod -R 777 /tmp/widoco-output
 
-      - name: Generate WIDOCO documentation
+      - name: Generate WIDOCO documentation with OOPS
         run: |
           docker run --rm \
             -v /tmp/widoco-input:/input \
@@ -41,7 +42,8 @@ jobs:
             -outFolder /output \
             -webVowl \
             -rewriteAll \
-            -getOntologyMetadata
+            -getOntologyMetadata \
+            -oops
 
       - name: Replace docs folder
         run: |
@@ -51,6 +53,22 @@ jobs:
 
           if [ -f docs/index-en.html ]; then
             cp docs/index-en.html docs/index.html
+          fi
+
+      - name: Replace WIDOCO placeholder sections
+        run: |
+          mkdir -p docs/sections
+
+          if [ -f widoco-sections/abstract-en.html ]; then
+            cp widoco-sections/abstract-en.html docs/sections/abstract-en.html
+          fi
+
+          if [ -f widoco-sections/introduction-en.html ]; then
+            cp widoco-sections/introduction-en.html docs/sections/introduction-en.html
+          fi
+
+          if [ -f widoco-sections/description-en.html ]; then
+            cp widoco-sections/description-en.html docs/sections/description-en.html
           fi
 
       - name: Commit generated documentation
