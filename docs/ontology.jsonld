@@ -48,7 +48,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/terms/created" : [ {
     "@type" : "http://www.w3.org/2001/XMLSchema#date",
-    "@value" : "2025-02-01"
+    "@value" : "2026-02-01"
   } ],
   "http://purl.org/dc/terms/creator" : [ {
     "@value" : "Gabriele Tuozzo and Maria Angela Pellegrino"
@@ -578,7 +578,7 @@
     "@value" : "URI pointing to the source code implementing this algorithm."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/fair-o#ßCalculationAlgorithm"
+    "@id" : "https://w3id.org/fair-o#CalculationAlgorithm"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -655,9 +655,6 @@
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/fair-o#FAIRAssessment"
   } ]
-}, {
-  "@id" : "https://w3id.org/fair-o#ßCalculationAlgorithm",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "https://w3id.org/fair/principles/terms/FAIR-SubPrinciple",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]

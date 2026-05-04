@@ -6,6 +6,6 @@
 	 dc:title "FAIR-O: An Ontology for FAIR Assessment and Scoring";
 	 prov:wasAttributedTo :agent0;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
-	 prov:wasGeneratedAt "2025-02-01";
+	 prov:wasGeneratedAt "2026-02-01";
 .
 :agent0 a prov:Agent; foaf:name "Gabriele Tuozzo and Maria Angela Pellegrino".
