@@ -15,7 +15,7 @@
     rdfs:comment """The FAIR Assessment Ontology is designed to model the process and outcomes of evaluating digital objects according to the FAIR principles. It captures FAIR assessments as provenance-aware activities, linking evaluated resources to detailed results for each FAIR sub-principle.
                     Each assessment can include multiple sub-principle results, associated evidence, quantitative scores, and test outcomes (e.g., pass, fail, indeterminate). The ontology also models the computational aspects of FAIR evaluation, including scoring functions, calculation algorithms, and aggregation methods used to derive higher-level scores.
                     The ontology is aligned with the FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for the definition of principles and sub-principles, and reuses established standards such as PROV-O for provenance and SKOS for controlled vocabularies. This ensures interoperability with existing FAIR tools and supports integration into automated FAIR assessment pipelines."""@en ;
-    dcterms:created "2025-02-01"^^xsd:date ;
+    dcterms:created "2026-02-01"^^xsd:date ;
     dcterms:modified "2026-05-04"^^xsd:date ;
     dcterms:creator "Gabriele Tuozzo and Maria Angela Pellegrino" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -227,7 +227,7 @@ fairo:algorithmDescription a owl:DatatypeProperty ;
     rdfs:comment "A human-readable description of how the algorithm works."@en .
 
 fairo:sourceCode a owl:DatatypeProperty ;
-    rdfs:domain fairo:ßCalculationAlgorithm ;
+    rdfs:domain fairo:CalculationAlgorithm ;
     rdfs:range xsd:anyURI ;
     rdfs:label "source code"@en ;
     rdfs:comment "URI pointing to the source code implementing this algorithm."@en .
