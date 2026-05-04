@@ -21,10 +21,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate WIDOCO documentation
+      - name: Remove old generated documentation
         run: |
+          sudo rm -rf docs
           mkdir -p docs
 
+      - name: Generate WIDOCO documentation
+        run: |
           docker run --rm \
             -v "$PWD":/data \
             ghcr.io/dgarijo/widoco:latest \
@@ -34,9 +37,13 @@ jobs:
             -rewriteAll \
             -getOntologyMetadata
 
+      - name: Fix generated file ownership
+        run: |
+          sudo chown -R "$USER:$USER" docs
+
       - name: Ensure GitHub Pages index exists
         run: |
-          if [ -f docs/index-en.html ] && [ ! -f docs/index.html ]; then
+          if [ -f docs/index-en.html ]; then
             cp docs/index-en.html docs/index.html
           fi
 
@@ -44,4 +51,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update WIDOCO documentation"
-          file_pattern: "docs/*"
+          file_pattern: "docs/**"
