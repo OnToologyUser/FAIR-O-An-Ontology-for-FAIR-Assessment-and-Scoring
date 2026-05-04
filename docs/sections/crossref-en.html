@@ -1,0 +1,1635 @@
+<h2 id="crossreference" class="list">Cross-reference for FAIR-O: An Ontology for FAIR Assessment and Scoring classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by FAIR-O: An Ontology for FAIR Assessment and Scoring.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#AggregationMethod" title="https://w3id.org/fair-o#AggregationMethod">Aggregation Method</a></li>
+  <li><a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a></li>
+  <li><a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#OrderedCollection" title="http://www.w3.org/2004/02/skos/core#OrderedCollection">Ordered Collection</a></li>
+  <li><a href="#CalculationAlgorithm" title="https://w3id.org/fair-o#CalculationAlgorithm">Scoring Algorithm</a></li>
+  <li><a href="#ScoringFunction" title="https://w3id.org/fair-o#ScoringFunction">Scoring Function</a></li>
+  <li><a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a></li>
+  <li><a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a></li>
+ </ul>
+ <div class="entity" id="AggregationMethod">
+  <h3>Aggregation Method<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#AggregationMethod</p>
+  <div class="comment">
+   <span class="markdown">A method for combining individual sub-principle scores into principle-level or overall scores.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Plan" target="_blank" title="http://www.w3.org/ns/prov#Plan">Plan</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#usesAggregationMethod" title="https://w3id.org/fair-o#usesAggregationMethod">uses aggregation method</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="AssessmentScope">
+  <h3>Assessment Scope<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#AssessmentScope</p>
+  <div class="comment">
+   <span class="markdown">The scope of what is being assessed: data, metadata, or both.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#DataAndMetadata" title="https://w3id.org/fair-o#DataAndMetadata">Data and Metadata</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#DataScope" title="https://w3id.org/fair-o#DataScope">Data</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#MetadataScope" title="https://w3id.org/fair-o#MetadataScope">Metadata</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#appliesTo" title="https://w3id.org/fair-o#appliesTo">applies to</a> <sup class="type-op" title="object property">op</sup>, <a href="#assessmentScope" title="https://w3id.org/fair-o#assessmentScope">assessment scope</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#DataScope" title="https://w3id.org/fair-o#DataScope">Data</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#DataAndMetadata" title="https://w3id.org/fair-o#DataAndMetadata">Data and Metadata</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MetadataScope" title="https://w3id.org/fair-o#MetadataScope">Metadata</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#Collection">
+  <h3>Collection<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#Collection</p>
+  <div class="comment">
+   <span class="markdown">A meaningful collection of concepts.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#OrderedCollection" title="http://www.w3.org/2004/02/skos/core#OrderedCollection">Ordered Collection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#member" title="http://www.w3.org/2004/02/skos/core#member">has member</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#member" title="http://www.w3.org/2004/02/skos/core#member">has member</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#Concept">
+  <h3>Concept<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#Concept</p>
+  <div class="comment">
+   <span class="markdown">An idea or notion; a unit of thought.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>, <a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">is top concept in scheme</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#member" title="http://www.w3.org/2004/02/skos/core#member">has member</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has top concept</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#ConceptScheme">
+  <h3>Concept Scheme<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#ConceptScheme</p>
+  <div class="comment">
+   <span class="markdown">A set of concepts, optionally including statements about semantic relationships between those concepts.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <dl>
+   <dt>
+    Example
+   </dt>
+   <dd>
+    <pre>Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.</pre>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has top concept</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">is top concept in scheme</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a> <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FAIRAssessment">
+  <h3>FAIR Assessment<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#FAIRAssessment</p>
+  <div class="comment">
+   <span class="markdown">A quality assessment of a digital object against FAIR principles at a specific point in time.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Activity" target="_blank" title="http://www.w3.org/ns/prov#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#aScore" title="https://w3id.org/fair-o#aScore">A score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#fScore" title="https://w3id.org/fair-o#fScore">F score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#iScore" title="https://w3id.org/fair-o#iScore">I score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#rScore" title="https://w3id.org/fair-o#rScore">R score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasSubPrincipleResult" title="https://w3id.org/fair-o#hasSubPrincipleResult">has sub-principle result</a> <sup class="type-op" title="object property">op</sup>, <a href="#fairScore" title="https://w3id.org/fair-o#fairScore">overall score</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#usesAggregationMethod" title="https://w3id.org/fair-o#usesAggregationMethod">uses aggregation method</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#wasAssessedBy" title="https://w3id.org/fair-o#wasAssessedBy">was assessed by</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#OrderedCollection">
+  <h3>Ordered Collection<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#OrderedCollection</p>
+  <div class="comment">
+   <span class="markdown">An ordered collection of concepts, where both the grouping and the ordering are meaningful.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#memberList" title="http://www.w3.org/2004/02/skos/core#memberList">has member list</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CalculationAlgorithm">
+  <h3>Scoring Algorithm<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#CalculationAlgorithm</p>
+  <div class="comment">
+   <span class="markdown">The computational procedure or method used to evaluate a sub-principle and produce a score.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Plan" target="_blank" title="http://www.w3.org/ns/prov#Plan">Plan</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#algorithmDescription" title="https://w3id.org/fair-o#algorithmDescription">algorithm description</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#appliesScoringFunction" title="https://w3id.org/fair-o#appliesScoringFunction">applies scoring function</a> <sup class="type-op" title="object property">op</sup>, <a href="#implementedBy" title="https://w3id.org/fair-o#implementedBy">implemented by</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#computedUsing" title="https://w3id.org/fair-o#computedUsing">computed using</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ScoringFunction">
+  <h3>Scoring Function<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#ScoringFunction</p>
+  <div class="comment">
+   <span class="markdown">A mathematical or logical function that maps assessment evidence to a numeric score for a sub-principle.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Entity" target="_blank" title="http://www.w3.org/ns/prov#Entity">Entity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#maxValue" title="https://w3id.org/fair-o#maxValue">maximum value</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#minValue" title="https://w3id.org/fair-o#minValue">minimum value</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#appliesScoringFunction" title="https://w3id.org/fair-o#appliesScoringFunction">applies scoring function</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SubPrincipleResult">
+  <h3>Sub-Principle Result<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#SubPrincipleResult</p>
+  <div class="comment">
+   <span class="markdown">The assessment result for a specific FAIR sub-principle (e.g., F1, A1.1, I2).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Entity" target="_blank" title="http://www.w3.org/ns/prov#Entity">Entity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#assessmentScope" title="https://w3id.org/fair-o#assessmentScope">assessment scope</a> <sup class="type-op" title="object property">op</sup>, <a href="#computedUsing" title="https://w3id.org/fair-o#computedUsing">computed using</a> <sup class="type-op" title="object property">op</sup>, <a href="#evidence" title="https://w3id.org/fair-o#evidence">evidence</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#forSubPrinciple" title="https://w3id.org/fair-o#forSubPrinciple">for sub-principle</a> <sup class="type-op" title="object property">op</sup>, <a href="#testResult" title="https://w3id.org/fair-o#testResult">test result</a> <sup class="type-op" title="object property">op</sup>, <a href="#value" title="https://w3id.org/fair-o#value">value</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasSubPrincipleResult" title="https://w3id.org/fair-o#hasSubPrincipleResult">has sub-principle result</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TestOutcome">
+  <h3>Test Outcome<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#TestOutcome</p>
+  <div class="comment">
+   <span class="markdown">The result of a FAIR test (e.g., Pass, Fail, or Indeterminate).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#Fail" title="https://w3id.org/fair-o#Fail">Fail</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Indeterminate" title="https://w3id.org/fair-o#Indeterminate">Indeterminate</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Pass" title="https://w3id.org/fair-o#Pass">Pass</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#testResult" title="https://w3id.org/fair-o#testResult">test result</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Fail" title="https://w3id.org/fair-o#Fail">Fail</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Indeterminate" title="https://w3id.org/fair-o#Indeterminate">Indeterminate</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Pass" title="https://w3id.org/fair-o#Pass">Pass</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#appliesScoringFunction" title="https://w3id.org/fair-o#appliesScoringFunction">applies scoring function</a></li>
+  <li><a href="#appliesTo" title="https://w3id.org/fair-o#appliesTo">applies to</a></li>
+  <li><a href="#assessmentScope" title="https://w3id.org/fair-o#assessmentScope">assessment scope</a></li>
+  <li><a href="#computedUsing" title="https://w3id.org/fair-o#computedUsing">computed using</a></li>
+  <li><a href="#forSubPrinciple" title="https://w3id.org/fair-o#forSubPrinciple">for sub-principle</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#broader" title="http://www.w3.org/2004/02/skos/core#broader">has broader</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#broadMatch" title="http://www.w3.org/2004/02/skos/core#broadMatch">has broader match</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#broaderTransitive" title="http://www.w3.org/2004/02/skos/core#broaderTransitive">has broader transitive</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#closeMatch" title="http://www.w3.org/2004/02/skos/core#closeMatch">has close match</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#exactMatch" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#member" title="http://www.w3.org/2004/02/skos/core#member">has member</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#memberList" title="http://www.w3.org/2004/02/skos/core#memberList">has member list</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#narrower" title="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#narrowMatch" title="http://www.w3.org/2004/02/skos/core#narrowMatch">has narrower match</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#narrowerTransitive" title="http://www.w3.org/2004/02/skos/core#narrowerTransitive">has narrower transitive</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#related" title="http://www.w3.org/2004/02/skos/core#related">has related</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#relatedMatch" title="http://www.w3.org/2004/02/skos/core#relatedMatch">has related match</a></li>
+  <li><a href="#hasSubPrincipleResult" title="https://w3id.org/fair-o#hasSubPrincipleResult">has sub-principle result</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has top concept</a></li>
+  <li><a href="#implementedBy" title="https://w3id.org/fair-o#implementedBy">implemented by</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">is top concept in scheme</a></li>
+  <li><a href="#testResult" title="https://w3id.org/fair-o#testResult">test result</a></li>
+  <li><a href="#usesAggregationMethod" title="https://w3id.org/fair-o#usesAggregationMethod">uses aggregation method</a></li>
+  <li><a href="#wasAssessedBy" title="https://w3id.org/fair-o#wasAssessedBy">was assessed by</a></li>
+ </ul>
+ <div class="entity" id="appliesScoringFunction">
+  <h3>applies scoring function<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#appliesScoringFunction</p>
+  <div class="comment">
+   <span class="markdown">Links an algorithm to the scoring function it uses.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CalculationAlgorithm" title="https://w3id.org/fair-o#CalculationAlgorithm">Scoring Algorithm</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ScoringFunction" title="https://w3id.org/fair-o#ScoringFunction">Scoring Function</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="appliesTo">
+  <h3>applies to<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#appliesTo</p>
+  <div class="comment">
+   <span class="markdown">Indicates whether a sub-principle applies to data, metadata, or both.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/fair/principles/terms/FAIR-SubPrinciple" target="_blank" title="https://w3id.org/fair/principles/terms/FAIR-SubPrinciple">F A I R Sub Principle</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="assessmentScope">
+  <h3>assessment scope<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#assessmentScope</p>
+  <div class="comment">
+   <span class="markdown">Indicates whether the sub-principle result pertains to data, metadata, or both.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="computedUsing">
+  <h3>computed using<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#computedUsing</p>
+  <div class="comment">
+   <span class="markdown">Links a sub-principle result to the algorithm used to compute it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#CalculationAlgorithm" title="https://w3id.org/fair-o#CalculationAlgorithm">Scoring Algorithm</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="forSubPrinciple">
+  <h3>for sub-principle<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#forSubPrinciple</p>
+  <div class="comment">
+   <span class="markdown">Links a sub-principle result to the specific FAIR sub-principle it evaluates (defined in the official FAIR Vocabulary).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/fair/principles/terms/FAIR-SubPrinciple" target="_blank" title="https://w3id.org/fair/principles/terms/FAIR-SubPrinciple">F A I R Sub Principle</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#broader">
+  <h3>has broader<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#broader</p>
+  <div class="comment">
+   <span class="markdown">Broader concepts are typically rendered as parents in a concept hierarchy (tree).</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">Relates a concept to a concept that is more general in meaning.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broaderTransitive" title="http://www.w3.org/2004/02/skos/core#broaderTransitive">has broader transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broadMatch" title="http://www.w3.org/2004/02/skos/core#broadMatch">has broader match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrower" title="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#broadMatch">
+  <h3>has broader match<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#broadMatch</p>
+  <div class="comment">
+   <span class="markdown">skos:broadMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broader" title="http://www.w3.org/2004/02/skos/core#broader">has broader</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrowMatch" title="http://www.w3.org/2004/02/skos/core#narrowMatch">has narrower match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#broaderTransitive">
+  <h3>has broader transitive<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#broaderTransitive</p>
+  <div class="comment">
+   <span class="markdown">skos:broaderTransitive is a transitive superproperty of skos:broader.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broader" title="http://www.w3.org/2004/02/skos/core#broader">has broader</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrowerTransitive" title="http://www.w3.org/2004/02/skos/core#narrowerTransitive">has narrower transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#closeMatch">
+  <h3>has close match<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#closeMatch</p>
+  <div class="comment">
+   <span class="markdown">skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of "compound errors" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> symmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#exactMatch" title="http://www.w3.org/2004/02/skos/core#exactMatch">has exact match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#exactMatch">
+  <h3>has exact match<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#exactMatch</p>
+  <div class="comment">
+   <span class="markdown">skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch.</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">skos:exactMatch is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> symmetric, transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#closeMatch" title="http://www.w3.org/2004/02/skos/core#closeMatch">has close match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#member">
+  <h3>has member<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#member</p>
+  <div class="comment">
+   <span class="markdown">Relates a collection to one of its members.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Collection" title="http://www.w3.org/2004/02/skos/core#Collection">Collection</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#memberList">
+  <h3>has member list<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#memberList</p>
+  <div class="comment">
+   <span class="markdown">For any resource, every item in the list given as the value of the skos:memberList property is also a value of the skos:member property.</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">Relates an ordered collection to the RDF list containing its members.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#OrderedCollection" title="http://www.w3.org/2004/02/skos/core#OrderedCollection">Ordered Collection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" target="_blank" title="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">List</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#narrower">
+  <h3>has narrower<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#narrower</p>
+  <div class="comment">
+   <span class="markdown">Narrower concepts are typically rendered as children in a concept hierarchy (tree).</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">Relates a concept to a concept that is more specific in meaning.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrowerTransitive" title="http://www.w3.org/2004/02/skos/core#narrowerTransitive">has narrower transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrowMatch" title="http://www.w3.org/2004/02/skos/core#narrowMatch">has narrower match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broader" title="http://www.w3.org/2004/02/skos/core#broader">has broader</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#narrowMatch">
+  <h3>has narrower match<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#narrowMatch</p>
+  <div class="comment">
+   <span class="markdown">skos:narrowMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrower" title="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broadMatch" title="http://www.w3.org/2004/02/skos/core#broadMatch">has broader match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#narrowerTransitive">
+  <h3>has narrower transitive<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#narrowerTransitive</p>
+  <div class="comment">
+   <span class="markdown">skos:narrowerTransitive is a transitive superproperty of skos:narrower.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#narrower" title="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broaderTransitive" title="http://www.w3.org/2004/02/skos/core#broaderTransitive">has broader transitive</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#related">
+  <h3>has related<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#related</p>
+  <div class="comment">
+   <span class="markdown">skos:related is disjoint with skos:broaderTransitive</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">Relates a concept to a concept with which there is an associative semantic relationship.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> symmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#relatedMatch" title="http://www.w3.org/2004/02/skos/core#relatedMatch">has related match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#relatedMatch">
+  <h3>has related match<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#relatedMatch</p>
+  <div class="comment">
+   <span class="markdown">skos:relatedMatch is used to state an associative mapping link between two conceptual resources in different concept schemes.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <p><strong>has characteristics: </strong> symmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#related" title="http://www.w3.org/2004/02/skos/core#related">has related</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasSubPrincipleResult">
+  <h3>has sub-principle result<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#hasSubPrincipleResult</p>
+  <div class="comment">
+   <span class="markdown">Links an assessment to individual sub-principle results.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#hasTopConcept">
+  <h3>has top concept<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#hasTopConcept</p>
+  <div class="comment">
+   <span class="markdown">Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">is top concept in scheme</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="implementedBy">
+  <h3>implemented by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#implementedBy</p>
+  <div class="comment">
+   <span class="markdown">Links the algorithm to the software that implements it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CalculationAlgorithm" title="https://w3id.org/fair-o#CalculationAlgorithm">Scoring Algorithm</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/prov#SoftwareAgent" target="_blank" title="http://www.w3.org/ns/prov#SoftwareAgent">Software Agent</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#mappingRelation">
+  <h3>is in mapping relation with<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#mappingRelation</p>
+  <div class="comment">
+   <span class="markdown">These concept mapping relations mirror semantic relations, and the data model defined below is similar (with the exception of skos:exactMatch) to the data model defined for semantic relations. A distinct vocabulary is provided for concept mapping relations, to provide a convenient way to differentiate links within a concept scheme from links between concept schemes. However, this pattern of usage is not a formal requirement of the SKOS data model, and relies on informal definitions of best practice.</span>
+  </div>
+  <div class="comment">
+   <span class="markdown">Relates two concepts coming, by convention, from different schemes, and that have comparable meanings</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#semanticRelation" title="http://www.w3.org/2004/02/skos/core#semanticRelation">is in semantic relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broadMatch" title="http://www.w3.org/2004/02/skos/core#broadMatch">has broader match</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#closeMatch" title="http://www.w3.org/2004/02/skos/core#closeMatch">has close match</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#narrowMatch" title="http://www.w3.org/2004/02/skos/core#narrowMatch">has narrower match</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#relatedMatch" title="http://www.w3.org/2004/02/skos/core#relatedMatch">has related match</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#inScheme">
+  <h3>is in scheme<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#inScheme</p>
+  <div class="comment">
+   <span class="markdown">Relates a resource (for example a concept) to a concept scheme in which it is included.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">is top concept in scheme</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#semanticRelation">
+  <h3>is in semantic relation with<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#semanticRelation</p>
+  <div class="comment">
+   <span class="markdown">Links a concept to a concept related by meaning.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#broaderTransitive" title="http://www.w3.org/2004/02/skos/core#broaderTransitive">has broader transitive</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#narrowerTransitive" title="http://www.w3.org/2004/02/skos/core#narrowerTransitive">has narrower transitive</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#related" title="http://www.w3.org/2004/02/skos/core#related">has related</a> <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/2004/02/skos/core#mappingRelation" title="http://www.w3.org/2004/02/skos/core#mappingRelation">is in mapping relation with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#topConceptOf">
+  <h3>is top concept in scheme<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#topConceptOf</p>
+  <div class="comment">
+   <span class="markdown">Relates a concept to the concept scheme that it is a top level concept of.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#Concept" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has top concept</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="testResult">
+  <h3>test result<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#testResult</p>
+  <div class="comment">
+   <span class="markdown">The outcome of the test for the sub-principle.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="usesAggregationMethod">
+  <h3>uses aggregation method<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#usesAggregationMethod</p>
+  <div class="comment">
+   <span class="markdown">Links an assessment to the method used to aggregate sub-principle scores.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AggregationMethod" title="https://w3id.org/fair-o#AggregationMethod">Aggregation Method</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="wasAssessedBy">
+  <h3>was assessed by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#wasAssessedBy</p>
+  <div class="comment">
+   <span class="markdown">Links a resource to a FAIR assessment that evaluated it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/prov#Entity" target="_blank" title="http://www.w3.org/ns/prov#Entity">Entity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#aScore" title="https://w3id.org/fair-o#aScore">A score</a></li>
+  <li><a href="#algorithmDescription" title="https://w3id.org/fair-o#algorithmDescription">algorithm description</a></li>
+  <li><a href="#evidence" title="https://w3id.org/fair-o#evidence">evidence</a></li>
+  <li><a href="#fScore" title="https://w3id.org/fair-o#fScore">F score</a></li>
+  <li><a href="#formula" title="https://w3id.org/fair-o#formula">formula</a></li>
+  <li><a href="#iScore" title="https://w3id.org/fair-o#iScore">I score</a></li>
+  <li><a href="#maxValue" title="https://w3id.org/fair-o#maxValue">maximum value</a></li>
+  <li><a href="#minValue" title="https://w3id.org/fair-o#minValue">minimum value</a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">notation</a></li>
+  <li><a href="#fairScore" title="https://w3id.org/fair-o#fairScore">overall score</a></li>
+  <li><a href="#rScore" title="https://w3id.org/fair-o#rScore">R score</a></li>
+  <li><a href="#sourceCode" title="https://w3id.org/fair-o#sourceCode">source code</a></li>
+  <li><a href="#value" title="https://w3id.org/fair-o#value">value</a></li>
+ </ul>
+ <div class="entity" id="aScore">
+  <h3>A score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#aScore</p>
+  <div class="comment">
+   <span class="markdown">An aggregate score for the Accessible principle.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="algorithmDescription">
+  <h3>algorithm description<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#algorithmDescription</p>
+  <div class="comment">
+   <span class="markdown">A human-readable description of how the algorithm works.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CalculationAlgorithm" title="https://w3id.org/fair-o#CalculationAlgorithm">Scoring Algorithm</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="evidence">
+  <h3>evidence<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#evidence</p>
+  <div class="comment">
+   <span class="markdown">Textual evidence supporting the sub-principle result.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="fScore">
+  <h3>F score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#fScore</p>
+  <div class="comment">
+   <span class="markdown">An aggregate score for the Findable principle.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="formula">
+  <h3>formula<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#formula</p>
+  <div class="comment">
+   <span class="markdown">A textual or mathematical representation of the scoring formula.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="iScore">
+  <h3>I score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#iScore</p>
+  <div class="comment">
+   <span class="markdown">An aggregate score for the Interoperable principle.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="maxValue">
+  <h3>maximum value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#maxValue</p>
+  <div class="comment">
+   <span class="markdown">The maximum possible score this function can produce.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ScoringFunction" title="https://w3id.org/fair-o#ScoringFunction">Scoring Function</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="minValue">
+  <h3>minimum value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#minValue</p>
+  <div class="comment">
+   <span class="markdown">The minimum possible score this function can produce.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ScoringFunction" title="https://w3id.org/fair-o#ScoringFunction">Scoring Function</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#notation">
+  <h3>notation<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#notation</p>
+  <div class="comment">
+   <span class="markdown">A notation, also known as classification code, is a string of characters such as "T58.5" or "303.4833" used to uniquely identify a concept within the scope of a given concept scheme.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="fairScore">
+  <h3>overall score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#fairScore</p>
+  <div class="comment">
+   <span class="markdown">An aggregate score for the entire FAIR assessment.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="rScore">
+  <h3>R score<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#rScore</p>
+  <div class="comment">
+   <span class="markdown">An aggregate score for the Reusable principle.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FAIRAssessment" title="https://w3id.org/fair-o#FAIRAssessment">FAIR Assessment</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="sourceCode">
+  <h3>source code<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#sourceCode</p>
+  <div class="comment">
+   <span class="markdown">URI pointing to the source code implementing this algorithm.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/fair-o#%C3%9FCalculationAlgorithm" target="_blank" title="https://w3id.org/fair-o#ßCalculationAlgorithm">ß Calculation Algorithm</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#anyURI" target="_blank" title="http://www.w3.org/2001/XMLSchema#anyURI">any U R I</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="value">
+  <h3>value<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#value</p>
+  <div class="comment">
+   <span class="markdown">The numeric value assigned to the sub-principle result.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SubPrincipleResult" title="https://w3id.org/fair-o#SubPrincipleResult">Sub-Principle Result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#DataScope" title="https://w3id.org/fair-o#DataScope">Data</a></li>
+  <li><a href="#DataAndMetadata" title="https://w3id.org/fair-o#DataAndMetadata">Data and Metadata</a></li>
+  <li><a href="#Fail" title="https://w3id.org/fair-o#Fail">Fail</a></li>
+  <li><a href="#Indeterminate" title="https://w3id.org/fair-o#Indeterminate">Indeterminate</a></li>
+  <li><a href="#MetadataScope" title="https://w3id.org/fair-o#MetadataScope">Metadata</a></li>
+  <li><a href="#Pass" title="https://w3id.org/fair-o#Pass">Pass</a></li>
+ </ul>
+ <div class="entity" id="DataScope">
+  <h3>Data<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#DataScope</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DataAndMetadata">
+  <h3>Data and Metadata<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#DataAndMetadata</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Fail">
+  <h3>Fail<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#Fail</p>
+  <div class="comment">
+   <span class="markdown">The test was not satisfied (score = 0).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"FAIL"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Indeterminate">
+  <h3>Indeterminate<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#Indeterminate</p>
+  <div class="comment">
+   <span class="markdown">The test was partially satisfied (0 &lt; score &lt; 1).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"INDETERMINATE"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MetadataScope">
+  <h3>Metadata<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#MetadataScope</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssessmentScope" title="https://w3id.org/fair-o#AssessmentScope">Assessment Scope</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Pass">
+  <h3>Pass<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/fair-o#Pass</p>
+  <div class="comment">
+   <span class="markdown">The test was fully satisfied (score = 1).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#TestOutcome" title="https://w3id.org/fair-o#TestOutcome">Test Outcome</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"PASS"</span>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
