@@ -5,8 +5,8 @@ from rdflib import Graph
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 FILES_TO_LOAD = [
-    BASE_DIR / "FAIR-assessment-ontology.ttl",
-    BASE_DIR / "FAIR-assessment-data.ttl",
+    BASE_DIR / "FAIR-O.ttl",
+    BASE_DIR / "FAIR-O_data.ttl",
 ]
 
 QUERY_DIR = BASE_DIR / "queries"
