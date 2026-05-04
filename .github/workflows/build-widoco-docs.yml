@@ -1,0 +1,47 @@
+name: Build WIDOCO documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "FAIR-O.ttl"
+      - ".github/workflows/build-widoco-docs.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate WIDOCO documentation
+        run: |
+          mkdir -p docs
+
+          docker run --rm \
+            -v "$PWD":/data \
+            ghcr.io/dgarijo/widoco:latest \
+            -ontFile /data/FAIR-O.ttl \
+            -outFolder /data/docs \
+            -webVowl \
+            -rewriteAll \
+            -getOntologyMetadata
+
+      - name: Ensure GitHub Pages index exists
+        run: |
+          if [ -f docs/index-en.html ] && [ ! -f docs/index.html ]; then
+            cp docs/index-en.html docs/index.html
+          fi
+
+      - name: Commit generated documentation
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update WIDOCO documentation"
+          file_pattern: "docs/*"
