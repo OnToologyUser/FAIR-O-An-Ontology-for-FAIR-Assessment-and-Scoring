@@ -213,3 +213,4 @@ personal_rag.py
 faiss_index/
 !.htaccess
 !.github
+/data/*.csv
