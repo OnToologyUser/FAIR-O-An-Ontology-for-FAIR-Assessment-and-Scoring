@@ -21,30 +21,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare documentation folders
+      - name: Prepare temporary workspace
         run: |
-          sudo rm -rf docs
-          mkdir -p docs
-          mkdir -p docs/resources
-          mkdir -p docs/webvowl
+          rm -rf /tmp/widoco-input /tmp/widoco-output
+          mkdir -p /tmp/widoco-input
+          mkdir -p /tmp/widoco-output
+          cp FAIR-O.ttl /tmp/widoco-input/FAIR-O.ttl
 
       - name: Generate WIDOCO documentation
         run: |
           docker run --rm \
-            -v "$PWD":/data \
+            -v /tmp/widoco-input:/input \
+            -v /tmp/widoco-output:/output \
             ghcr.io/dgarijo/widoco:latest \
-            -ontFile /data/FAIR-O.ttl \
-            -outFolder /data/docs \
+            -ontFile /input/FAIR-O.ttl \
+            -outFolder /output \
             -webVowl \
             -rewriteAll \
             -getOntologyMetadata
 
-      - name: Fix generated file ownership
+      - name: Replace docs folder
         run: |
-          sudo chown -R "$USER:$USER" docs
+          sudo rm -rf docs
+          mkdir -p docs
+          cp -R /tmp/widoco-output/. docs/
 
-      - name: Ensure GitHub Pages index exists
-        run: |
           if [ -f docs/index-en.html ]; then
             cp docs/index-en.html docs/index.html
           fi
