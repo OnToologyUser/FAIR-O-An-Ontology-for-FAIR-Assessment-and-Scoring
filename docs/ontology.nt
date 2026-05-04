@@ -3,7 +3,7 @@
 <https://w3id.org/fair-o> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2004/02/skos/core#> .
 <https://w3id.org/fair-o> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov#> .
 <https://w3id.org/fair-o> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/fair/principles/terms/FAIR-Vocabulary> .
-<https://w3id.org/fair-o> <http://purl.org/dc/terms/created> "2025-02-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/fair-o> <http://purl.org/dc/terms/created> "2026-02-01"^^<http://www.w3.org/2001/XMLSchema#date> .
 <https://w3id.org/fair-o> <http://purl.org/dc/terms/creator> "Gabriele Tuozzo and Maria Angela Pellegrino" .
 <https://w3id.org/fair-o> <http://purl.org/dc/terms/description> "The FAIR Assessment Ontology provides a structured and extensible model for representing the evaluation of digital resources against the FAIR (Findable, Accessible, Interoperable, Reusable) principles. It enables the formal description of assessment activities, detailed results at the level of individual FAIR sub-principles, and associated evidence, scoring functions, and computational methods. \n                       The ontology supports fine-grained tracking of assessment outcomes over time, allowing comparisons, reproducibility, and transparency in FAIR evaluations. It reuses and aligns with the official FAIR Vocabulary to ensure semantic consistency and interoperability with existing FAIR assessment frameworks and tools."@en .
 <https://w3id.org/fair-o> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> .
@@ -206,8 +206,7 @@
 # 
 # https://w3id.org/fair-o#sourceCode
 <https://w3id.org/fair-o#sourceCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<https://w3id.org/fair-o#sourceCode> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/fair-o#ßCalculationAlgorithm> .
-<https://w3id.org/fair-o#ßCalculationAlgorithm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/fair-o#sourceCode> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/fair-o#CalculationAlgorithm> .
 <https://w3id.org/fair-o#sourceCode> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
 <https://w3id.org/fair-o#sourceCode> <http://www.w3.org/2000/01/rdf-schema#comment> "URI pointing to the source code implementing this algorithm."@en .
 <https://w3id.org/fair-o#sourceCode> <http://www.w3.org/2000/01/rdf-schema#label> "source code"@en .
@@ -303,8 +302,6 @@ _:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <https://w3id.org/fair-o#TestOutcome> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2004/02/skos/core#Concept> .
 <https://w3id.org/fair-o#TestOutcome> <http://www.w3.org/2000/01/rdf-schema#comment> "The result of a FAIR test (e.g., Pass, Fail, or Indeterminate)."@en .
 <https://w3id.org/fair-o#TestOutcome> <http://www.w3.org/2000/01/rdf-schema#label> "Test Outcome"@en .
-# 
-# https://w3id.org/fair-o#ßCalculationAlgorithm
 # 
 # https://w3id.org/fair/principles/terms/FAIR-SubPrinciple
 # 
