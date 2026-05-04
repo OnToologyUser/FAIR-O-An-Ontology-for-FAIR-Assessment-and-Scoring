@@ -50,6 +50,8 @@ ALLOWED_COLUMNS = [
 ]
 
 AGGREGATE_CODES = {"FAIR", "F", "A", "I", "R"}
+SOFTWARE_AGENT_ID = "KGHeartBeat"
+SOFTWARE_AGENT_LABEL = "KGHeartBeat"
 
 
 @dataclass(frozen=True)
@@ -68,22 +70,22 @@ def parse_args() -> argparse.Namespace:
 	)
 	parser.add_argument(
 		"--input-folder",
-		default="./data",
+		default="../data",
 		help="Folder that contains snapshot CSV files.",
 	)
 	parser.add_argument(
 		"--mapping-json",
-		default="./data/fair_mapping.json",
+		default="../data/fair_mapping.json",
 		help="JSON file that maps metric labels to FAIR principle/subprinciple codes.",
 	)
 	parser.add_argument(
 		"--principles-doc",
-		default="./fair_principle_doc.json",
+		default="../data/fair_principle_doc.json",
 		help="JSON file with algorithm and scoring function documentation.",
 	)
 	parser.add_argument(
 		"--output",
-		default="./data/fair_assessment_kg.ttl",
+		default="../data/fair_assessment_kg.ttl",
 		help="Path to the output Turtle file.",
 	)
 	parser.add_argument(
@@ -192,10 +194,10 @@ def extract_http_url(raw: object) -> Optional[str]:
 
 def scope_from_source(source: str) -> str:
 	if source == "metadata":
-		return "fairAss:MetadataScope"
+		return "fairo:MetadataScope"
 	if source == "data":
-		return "fairAss:DataScope"
-	return "fairAss:DataAndMetadata"
+		return "fairo:DataScope"
+	return "fairo:DataAndMetadata"
 
 
 def source_from_metric(metric_name: str) -> str:
@@ -207,16 +209,16 @@ def source_from_metric(metric_name: str) -> str:
 
 
 def test_outcome_from_value(value: str) -> str:
-	"""Return the fairAss:TestOutcome individual URI for a numeric score string."""
+	"""Return the fairo:TestOutcome individual URI for a numeric score string."""
 	try:
 		num = float(value)
 	except ValueError:
-		return "fairAss:Indeterminate"
+		return "fairo:Indeterminate"
 	if num >= 1.0:
-		return "fairAss:Pass"
+		return "fairo:Pass"
 	if num <= 0.0:
-		return "fairAss:Fail"
-	return "fairAss:Indeterminate"
+		return "fairo:Fail"
+	return "fairo:Indeterminate"
 
 
 def stable_result_id(key: ResultKey) -> str:
@@ -272,8 +274,8 @@ def build_long_dataframe(input_folder: str, metric_map: Dict[str, str]) -> pd.Da
 def add_prefixes(lines: List[str]) -> None:
 	lines.extend(
 		[
-			"@prefix : <http://example.org/data/> .",
-			"@prefix fairAss: <http://example.org/fair-assessment#> .",
+			"@prefix : <https://kgheartbeat.di.unisa.it/fairness-data/> .",
+			"@prefix fairo: <https://w3id.org/fair-o#> .",
 			"@prefix fairVocab: <https://w3id.org/fair/principles/terms/> .",
 			"@prefix dct: <http://purl.org/dc/terms/> .",
 			"@prefix dcat: <http://www.w3.org/ns/dcat#> .",
@@ -298,9 +300,9 @@ def add_scoring_functions(lines: List[str], scoring_functions: List[Dict]) -> No
 
 		lines.extend(
 			[
-				f":{sf_id} a fairAss:ScoringFunction ;",
+				f":{sf_id} a fairo:ScoringFunction ;",
 				f'    rdfs:label "{label}" ;',
-				f'    fairAss:formula "{formula}" ;',
+				f'    fairo:formula "{formula}" ;',
 			]
 		)
 
@@ -308,13 +310,24 @@ def add_scoring_functions(lines: List[str], scoring_functions: List[Dict]) -> No
 			lines.append(f'    dct:description "{description}" ;')
 
 		if min_value is not None:
-			lines.append(f'    fairAss:minValue "{min_value}"^^xsd:decimal ;')
+			lines.append(f'    fairo:minValue "{min_value}"^^xsd:decimal ;')
 
 		if max_value is not None:
-			lines.append(f'    fairAss:maxValue "{max_value}"^^xsd:decimal ;')
+			lines.append(f'    fairo:maxValue "{max_value}"^^xsd:decimal ;')
 
 		lines[-1] = lines[-1].rstrip(" ;") + " ."
 		lines.append("")
+
+
+def add_software_agent(lines: List[str]) -> None:
+	"""Emit the software agent that implements the FAIR assessment algorithms."""
+	lines.extend(
+		[
+			f":{SOFTWARE_AGENT_ID} a prov:SoftwareAgent ;",
+			f'    rdfs:label "{SOFTWARE_AGENT_LABEL}" .',
+			"",
+		]
+	)
 
 
 def add_algorithms(lines: List[str], algorithms: List[Dict]) -> None:
@@ -328,16 +341,17 @@ def add_algorithms(lines: List[str], algorithms: List[Dict]) -> None:
 
 		lines.extend(
 			[
-				f":{alg_id} a fairAss:CalculationAlgorithm ;",
+				f":{alg_id} a fairo:CalculationAlgorithm ;",
 				f'    rdfs:label "{notation}" ;',
+				f"    fairo:implementedBy :{SOFTWARE_AGENT_ID} ;",
 			]
 		)
 
 		if description:
-			lines.append(f'    fairAss:algorithmDescription "{description}" ;')
+			lines.append(f'    fairo:algorithmDescription "{description}" ;')
 
 		if scoring_func_ref:
-			lines.append(f"    fairAss:appliesScoringFunction :{scoring_func_ref} ;")
+			lines.append(f"    fairo:appliesScoringFunction :{scoring_func_ref} ;")
 
 		lines[-1] = lines[-1].rstrip(" ;") + " ."
 		lines.append("")
@@ -353,9 +367,9 @@ def add_aggregation_methods(lines: List[str], aggregation_methods: List[Dict]) -
 
 		lines.extend(
 			[
-				f":{agg_id} a fairAss:AggregationMethod ;",
+				f":{agg_id} a fairo:AggregationMethod ;",
 				f'    rdfs:label "{label}" ;',
-				f'    fairAss:formula "{formula}" ;',
+				f'    fairo:formula "{formula}" ;',
 			]
 		)
 
@@ -394,6 +408,7 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 	algorithms = principles_doc.get("algorithms", [])
 
 	add_scoring_functions(lines, scoring_functions)
+	add_software_agent(lines)
 	add_algorithms(lines, algorithms)
 	add_aggregation_methods(lines, aggregation_methods)
 
@@ -483,7 +498,7 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 			assessment_uri = f"assessment_{uri_segment(kg_id)}_{uri_segment(date_text)}"
 			dt = f"{date_text}T00:00:00Z"
 
-			lines.append(f":{assessment_uri} a fairAss:FAIRAssessment, prov:Activity ;")
+			lines.append(f":{assessment_uri} a fairo:FAIRAssessment, prov:Activity ;")
 			lines.append(f"    prov:used :{dataset_uri} ;")
 			lines.append(f'    prov:startedAtTime "{dt}"^^xsd:dateTime ;')
 			lines.append(f'    prov:endedAtTime "{dt}"^^xsd:dateTime .')
@@ -529,15 +544,15 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 					)
 					algorithm_id = find_algorithm_for_metric(metric, algorithms)
 					outcome = test_outcome_from_value(value)
-					lines.append(f":{result_uri} a fairAss:SubPrincipleResult ;")
-					lines.append(f"    fairAss:forSubPrinciple fairVocab:{subprinciple} ;")
-					lines.append(f"    fairAss:assessmentScope {scope} ;")
-					lines.append(f'    fairAss:value "{value}"^^xsd:decimal ;')
-					lines.append(f"    fairAss:testResult {outcome} ;")
-					lines.append(f'    fairAss:evidence "{evidence}" ;')
+					lines.append(f":{result_uri} a fairo:SubPrincipleResult ;")
+					lines.append(f"    fairo:forSubPrinciple fairVocab:{subprinciple} ;")
+					lines.append(f"    fairo:assessmentScope {scope} ;")
+					lines.append(f'    fairo:value "{value}"^^xsd:decimal ;')
+					lines.append(f"    fairo:testResult {outcome} ;")
+					lines.append(f'    fairo:evidence "{evidence}" ;')
 
 					if algorithm_id:
-						lines.append(f"    fairAss:computedUsing :{algorithm_id} .")
+						lines.append(f"    fairo:computedUsing :{algorithm_id} .")
 					else:
 						lines[-1] = lines[-1].rstrip(" ;") + " ."
 
@@ -548,11 +563,11 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 
 			# Add aggregate scores
 			score_predicates = {
-				"FAIR": "fairAss:fairScore",
-				"F": "fairAss:fScore",
-				"A": "fairAss:aScore",
-				"I": "fairAss:iScore",
-				"R": "fairAss:rScore",
+				"FAIR": "fairo:fairScore",
+				"F": "fairo:fScore",
+				"A": "fairo:aScore",
+				"I": "fairo:iScore",
+				"R": "fairo:rScore",
 			}
 
 			score_entries = []
@@ -571,17 +586,17 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 			# Add aggregation method
 			if aggregation_methods:
 				agg_method_id = aggregation_methods[0].get("id", "linearCombination")
-				lines.append(f":{assessment_uri} fairAss:usesAggregationMethod :{agg_method_id} .")
+				lines.append(f":{assessment_uri} fairo:usesAggregationMethod :{agg_method_id} .")
 				lines.append("")
 
 	# Link datasets to assessments
 	for dataset_uri, assessment_uri in sorted(dataset_assessment_links):
-		lines.append(f":{dataset_uri} fairAss:wasAssessedBy :{assessment_uri} .")
+		lines.append(f":{dataset_uri} fairo:wasAssessedBy :{assessment_uri} .")
 		lines.append("")
 
 	# Link assessments to deduplicated results
 	for assessment_uri, result_uri in sorted(links):
-		lines.append(f":{assessment_uri} fairAss:hasSubPrincipleResult :{result_uri} .")
+		lines.append(f":{assessment_uri} fairo:hasSubPrincipleResult :{result_uri} .")
 		lines.append("")
 
 	append_turtle(lines, output_path)
