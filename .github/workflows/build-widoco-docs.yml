@@ -21,10 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Remove old generated documentation
+      - name: Prepare documentation folders
         run: |
           sudo rm -rf docs
           mkdir -p docs
+          mkdir -p docs/resources
+          mkdir -p docs/webvowl
 
       - name: Generate WIDOCO documentation
         run: |
