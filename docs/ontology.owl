@@ -11,7 +11,6 @@
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:terms="http://purl.org/dc/terms/"
-     xmlns:schema="https://schema.org/"
      xmlns:nschema="http://www.nanopub.org/nschema#">
     <owl:Ontology rdf:about="https://w3id.org/fair-o">
         <owl:versionIRI rdf:resource="https://w3id.org/fair-o/1.0.0"/>
@@ -35,7 +34,6 @@
                     The ontology is aligned with the FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for the definition of principles and sub-principles, and reuses established standards such as PROV-O for provenance and SKOS for controlled vocabularies. This ensures interoperability with existing FAIR tools and supports integration into automated FAIR assessment pipelines.</rdfs:comment>
         <rdfs:comment xml:lang="en">This ontology provides comprehensive FAIR assessment modeling. It reuses the official FAIR Vocabulary (https://w3id.org/fair/principles/terms/) for principle and sub-principle definitions.</rdfs:comment>
         <owl:versionInfo>1.0</owl:versionInfo>
-        <schema:creativeWorkStatus>Ontology Specification</schema:creativeWorkStatus>
     </owl:Ontology>
     
 
@@ -63,13 +61,6 @@
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/subject"/>
-    
-
-
-    <!-- https://schema.org/creativeWorkStatus -->
-
-
-    <owl:AnnotationProperty rdf:about="https://schema.org/creativeWorkStatus"/>
     
 
 

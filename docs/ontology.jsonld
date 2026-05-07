@@ -44,9 +44,6 @@
   "@id" : "http://www.w3.org/ns/prov#SoftwareAgent",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
-  "@id" : "https://schema.org/creativeWorkStatus",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
-}, {
   "@id" : "https://w3id.org/fair-o",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/terms/created" : [ {
@@ -101,9 +98,6 @@
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
     "@value" : "1.0"
-  } ],
-  "https://schema.org/creativeWorkStatus" : [ {
-    "@value" : "Ontology Specification"
   } ]
 }, {
   "@id" : "https://w3id.org/fair-o#AggregationMethod",
