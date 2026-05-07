@@ -26,9 +26,9 @@ FAIR-O provides a structured and extensible model for representing the evaluatio
 
 ## Documentation
 
-- Main docs page: [docs/index.html](docs/index.html)
-- WebVOWL visualization: [docs/webvowl/index.html](docs/webvowl/index.html)
-- Provenance report: [docs/provenance/provenance-en.html](docs/provenance/provenance-en.html)
+- Main docs page: [https://w3id.org/fair-o](https://w3id.org/fair-o)
+- WebVOWL visualization: [https://gabrielet0.github.io/FAIR-O-An-Ontology-for-FAIR-Assessment-and-Scoring/webvowl/index.html#](https://gabrielet0.github.io/FAIR-O-An-Ontology-for-FAIR-Assessment-and-Scoring/webvowl/index.html#)
+- Provenance report: [https://gabrielet0.github.io/FAIR-O-An-Ontology-for-FAIR-Assessment-and-Scoring/provenance/provenance-en.html](https://gabrielet0.github.io/FAIR-O-An-Ontology-for-FAIR-Assessment-and-Scoring/provenance/provenance-en.html)
 
 ## Queries and results
 
