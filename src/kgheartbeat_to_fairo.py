@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import glob
 import hashlib
 import json
@@ -87,6 +88,11 @@ def parse_args() -> argparse.Namespace:
 		"--output",
 		default="../data/fair_assessment_kg.ttl",
 		help="Path to the output Turtle file.",
+	)
+	parser.add_argument(
+		"--min-snapshot-date",
+		default="2025-04-27",
+		help="Only process CSV snapshots with date >= this value (YYYY-MM-DD).",
 	)
 	parser.add_argument(
 		"--organize",
@@ -227,7 +233,24 @@ def stable_result_id(key: ResultKey) -> str:
 	return f"result_{digest}"
 
 
-def build_long_dataframe(input_folder: str, metric_map: Dict[str, str]) -> pd.DataFrame:
+def extract_snapshot_date(csv_path: str) -> Optional[date]:
+	"""Extract YYYY-MM-DD snapshot date from a CSV filename."""
+	basename = os.path.splitext(os.path.basename(csv_path))[0]
+	match = re.search(r"\d{4}-\d{2}-\d{2}", basename)
+	if not match:
+		return None
+
+	try:
+		return date.fromisoformat(match.group(0))
+	except ValueError:
+		return None
+
+
+def build_long_dataframe(
+	input_folder: str,
+	metric_map: Dict[str, str],
+	min_snapshot_date: date,
+) -> pd.DataFrame:
 	frames: List[pd.DataFrame] = []
 	mapped_metrics = set(metric_map.keys())
 
@@ -235,7 +258,10 @@ def build_long_dataframe(input_folder: str, metric_map: Dict[str, str]) -> pd.Da
 		if "melted" in csv_path:
 			continue
 
-		snapshot_date = os.path.splitext(os.path.basename(csv_path))[0]
+		snapshot_date = extract_snapshot_date(csv_path)
+		if snapshot_date is None or snapshot_date < min_snapshot_date:
+			continue
+		snapshot_date_text = snapshot_date.isoformat()
 
 		df = pd.read_csv(csv_path, usecols=ALLOWED_COLUMNS)
 		df.columns = df.columns.str.strip()
@@ -261,12 +287,14 @@ def build_long_dataframe(input_folder: str, metric_map: Dict[str, str]) -> pd.Da
 		df_long = df_long[df_long["metric"].isin(mapped_metrics)].copy()
 		df_long["FAIR subprinciple"] = df_long["metric"].map(metric_map)
 		df_long["source"] = df_long["metric"].apply(source_from_metric)
-		df_long["Analysis date"] = snapshot_date
+		df_long["Analysis date"] = snapshot_date_text
 
 		frames.append(df_long)
 
 	if not frames:
-		raise ValueError(f"No input CSV snapshot found under: {input_folder}")
+		raise ValueError(
+			f"No input CSV snapshot found under {input_folder} with date >= {min_snapshot_date.isoformat()}"
+		)
 
 	return pd.concat(frames, ignore_index=True)
 
@@ -605,10 +633,16 @@ def build_kg(df_long: pd.DataFrame, output_path: str, principles_doc: Dict) -> T
 
 def main() -> None:
 	args = parse_args()
+	try:
+		min_snapshot_date = date.fromisoformat(args.min_snapshot_date)
+	except ValueError as exc:
+		raise ValueError(
+			f"Invalid --min-snapshot-date '{args.min_snapshot_date}'. Expected YYYY-MM-DD."
+		) from exc
 
 	metric_map = load_metric_map(args.mapping_json)
 	principles_doc = load_principles_doc(args.principles_doc)
-	df_long = build_long_dataframe(args.input_folder, metric_map)
+	df_long = build_long_dataframe(args.input_folder, metric_map, min_snapshot_date)
 
 	assessments, unique_results, links = build_kg(df_long, args.output, principles_doc)
 	print(f"KG written to: {args.output}")
