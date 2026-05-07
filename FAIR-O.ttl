@@ -6,9 +6,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
 
 
 <https://w3id.org/fair-o> a owl:Ontology ;
+    schema:creativeWorkStatus "Ontology Specification" .
     dcterms:title "FAIR-O: An Ontology for FAIR Assessment and Scoring"@en ;
     dcterms:description """The FAIR Assessment Ontology provides a structured and extensible model for representing the evaluation of digital resources against the FAIR (Findable, Accessible, Interoperable, Reusable) principles. It enables the formal description of assessment activities, detailed results at the level of individual FAIR sub-principles, and associated evidence, scoring functions, and computational methods. 
                        The ontology supports fine-grained tracking of assessment outcomes over time, allowing comparisons, reproducibility, and transparency in FAIR evaluations. It reuses and aligns with the official FAIR Vocabulary to ensure semantic consistency and interoperability with existing FAIR assessment frameworks and tools."""@en ;
