@@ -99,6 +99,11 @@ def parse_args() -> argparse.Namespace:
 		action="store_true",
 		help="Organize output TTL by grouping predicates per subject.",
 	)
+	parser.add_argument(
+		"--skip-missing-usecols",
+		action="store_true",
+		help="Skip CSV snapshots whose columns do not match the expected usecols list.",
+	)
 	return parser.parse_args()
 
 
@@ -250,6 +255,7 @@ def build_long_dataframe(
 	input_folder: str,
 	metric_map: Dict[str, str],
 	min_snapshot_date: date,
+	skip_missing_usecols: bool = False,
 ) -> pd.DataFrame:
 	frames: List[pd.DataFrame] = []
 	mapped_metrics = set(metric_map.keys())
@@ -263,7 +269,13 @@ def build_long_dataframe(
 			continue
 		snapshot_date_text = snapshot_date.isoformat()
 
-		df = pd.read_csv(csv_path, usecols=ALLOWED_COLUMNS)
+		try:
+			df = pd.read_csv(csv_path, usecols=ALLOWED_COLUMNS)
+		except ValueError as exc:
+			if skip_missing_usecols and "Usecols do not match columns" in str(exc):
+				print(f"Skipping {csv_path}: {exc}")
+				continue
+			raise
 		df.columns = df.columns.str.strip()
 
 		df_long = df.melt(
@@ -642,7 +654,12 @@ def main() -> None:
 
 	metric_map = load_metric_map(args.mapping_json)
 	principles_doc = load_principles_doc(args.principles_doc)
-	df_long = build_long_dataframe(args.input_folder, metric_map, min_snapshot_date)
+	df_long = build_long_dataframe(
+		args.input_folder,
+		metric_map,
+		min_snapshot_date,
+		skip_missing_usecols=args.skip_missing_usecols,
+	)
 
 	assessments, unique_results, links = build_kg(df_long, args.output, principles_doc)
 	print(f"KG written to: {args.output}")
