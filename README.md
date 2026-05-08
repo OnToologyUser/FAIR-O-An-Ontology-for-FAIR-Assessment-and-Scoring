@@ -18,6 +18,9 @@ FAIR-O provides a structured and extensible model for representing the evaluatio
 - Ontology: [FAIR-O.ttl](FAIR-O.ttl)
 - SHACL shapes constrains: [FAIR-O_shape.ttl](FAIR-O_shape.ttl)
 - Instance of the ontology with KGHeartBeat FAIR assessment results: [FAIR-O_data.ttl](FAIR-O_data.ttl)
+- Modelled KGs from assessment tools:
+  - FairChecker assessment: [fairchecker_assessment_fair-o.ttl](data/FAIRChecker_assessment/fairchecker_assessment_fair-o.ttl)
+  - F-UJI assessment: [fuji_assessment_fair-o.ttl](data/F-UJI_assessment/fuji_assessment_fair-o.ttl)
 - Documentation (Widoco output): [docs/index.html](docs/index.html)
 - Competency queries (SPARQL): [queries](queries)
 - Query results: [results](results)
@@ -36,7 +39,11 @@ The [queries](queries) folder contains competency queries (CQ1-CQ14) that exerci
 
 ## Scripts
 
-The [src](src) folder includes helper scripts for cleaning descriptions, organizing TTL files, validating data, and running the SPARQL queries that populate the results folder.
+The [src](src) folder includes helper scripts for cleaning descriptions, organizing TTL files, validating data, and running the SPARQL queries that populate the results folder. Conversion scripts are available to transform assessment outputs from different tools into FAIR-O instances:
+
+- `kgheartbeat_to_fairo.py` — Convert KGHeartBeat assessment snapshots
+- `fairchecker_to_fairo.py` — Convert FairChecker assessment output
+- `fuji_to_fairo.py` — Convert F-UJI assessment output
 
 ## Regenerate data, run CQs, and validate SHACL
 
