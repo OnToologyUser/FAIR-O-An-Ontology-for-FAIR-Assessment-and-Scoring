@@ -213,5 +213,5 @@ personal_rag.py
 faiss_index/
 !.htaccess
 !.github
-/data/*.csv
+/data/KGHeartBeat_assessment/*.csv
 CQ*.csv
